@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="themes/default/default.css" type="text/css" media="screen" />
+  <link rel="stylesheet" href="nivo-slider.css" type="text/css" media="screen" />
+  <link rel="stylesheet" href="slider.css" type="text/css" media="screen" />
+  <script src="js/jquery-1.7.1.min.js" type="text/javascript"></script>
+  <script type="text/javascript" src="jquery.nivo.slider.js"></script>
+  <script type="text/javascript">
+  $(window).load(function() {
+      $('#slider').nivoSlider({
+          controlNav: false,
+          directionNavHide: false
+      });
+      $('#slider').data('nivoslider').stop();
+  });
+</script>
+</head>
+<body>
+    <div class="slider-wrapper theme-default">
+        <div id="slider" class="nivoSlider">
+            <img src="../images/fullslides/stackmob1.png" alt="" title="SandBox" />
+            <img src="../images/fullslides/stackmob2.png" alt="" title="Create Application" />
+            <img src="../images/fullslides/stackmob3.png" alt="" title="Application: Objects / Custom Code / Console / Push / Analytics / Deploy / Settings / SDKs" />
+            <img src="../images/fullslides/stackmob4.png" alt="" title="Object Model: Database schema and REST API CRUD Methods" />
+            <img src="../images/fullslides/stackmob5.png" alt="" title="Custom Code: Write and upload server-side custom code" />
+            <img src="../images/fullslides/stackmob6.png" alt="" title="Console: Test datastore and REST API" />
+            <img src="../images/fullslides/stackmob7.png" alt="" title="Analytics: API Metrics" />
+            <img src="../images/fullslides/stackmob8.png" alt="" title="Deploy Management" />
+            <img src="../images/fullslides/stackmob9.png" alt="" title="Settings" />
+            <img src="../images/fullslides/stackmob10.png" alt="" title="SDKs: iOS SDK and Custom Code - Java" />
+            <img src="../images/fullslides/stackmob11.png" alt="" title="iOS SDK: REST API after build and OAuth key configuration" />
+        </div>
+    </div>
+</body>
+</html>

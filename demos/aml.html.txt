@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<!-- It must be well-formed! -->
+<html xmlns:a="http://ajax.org/2005/aml">
+<head>
+    <script src="js/apf_debug.js"></script>
+</head>
+<body>
+
+<a:skin src="js/skins/platform/skins.xml" media-path="js/skins/platform/images/" />
+
+<a:button caption="Stencil" onclick="alert('Stencil!');" />
+<a:model id="mdl1" save-original="true" 
+  src = "/ajax/flowchart/custom.xml" />
+
+<a:model id="mdlFlowchart" save-original="true" 
+  src = "/ajax/flowchart/myFlowChart.xml" />
+
+<a:model id="mdlblocks"
+  src = "/ajax/flowchart/blocks.xml" />
+
+<a:menu id="menu.file">
+    <a:item icon="add.png">New...</a:item>
+    <a:item>Close</a:item>
+</a:menu>
+<a:menu id="menu.help">
+    <a:item>Help</a:item>
+    <a:item>About us</a:item>
+</a:menu>
+<a:window 
+  width     = "635" 
+  height    = "550" 
+  title     = "Window" 
+  icon      = "application_view_icons.png" 
+  visible   = "true"
+  resizable = "true">
+    <a:toolbar skin="toolbar2005" align="top" height="51">
+        <a:menubar>
+            <a:button submenu="menu.file" >File</a:button>
+            <a:button onclick="alert(mdl1.getXml().xml);" caption="Model" tooltip="Show workflow model"></a:button>
+            <a:button submenu="menu.help">Help</a:button>
+        </a:menubar>
+        <a:bar>
+            <a:button onclick="apf.window.getActionTracker().undo()" caption="Undo" icon="icoUndo.gif" tooltip="Undo last action"></a:button>
+            <a:button onclick="apf.window.getActionTracker().redo()" caption="Redo" icon="icoRedo.gif" tooltip="Redo last action"></a:button>
+        </a:bar>
+    </a:toolbar>
+
+    <!-- dragcopy = "true" -->
+    <a:list 
+      id       = "MainList" 
+      model    = "mdlblocks" 
+      skin     = "thumbnail_caption" 
+      align    = "left-splitter" 
+      width    = "148">
+        <a:bindings>
+            <a:caption match = "[@caption]" />
+            <a:image   match = "[ancestor-or-self::node()[@type]]"
+                       value = "flowchart/images/blocks/[@type].png" />
+            <a:each    match = "[block]" />
+            <a:drag    match = "[block]" copy="true" />
+        </a:bindings>
+        <a:actions>
+            <a:remove match="[node()[@candelete=0]]" />
+            <a:add />
+        </a:actions>
+    </a:list>
+
+    <a:flowchart 
+      id          = "wfExample" 
+      drop        = "true"
+      template    = "/ajax/flowchart/template.xml" 
+      title       = "canvas" 
+      model       = "mdlFlowchart" 
+      align       = "right">
+        <a:each match="[block]">
+            <a:move match="[@move] != false &amp;&amp; [@lock] != true"></a:move>
+            <a:resize match="[@resize] == true &amp;&amp; [@lock] != true"></a:resize>
+            <a:css match="{true}" default="locked"></a:css>
+            <a:left match="[@left]"></a:left>
+            <a:top match="[@top]"></a:top>
+            <a:id match="[@id]"></a:id>
+            <a:width match="[@width]"></a:width>
+            <a:height match="[@height]"></a:height>
+            <a:flipv match="[@flipv]"></a:flipv>
+            <a:fliph match="[@fliph]"></a:fliph>
+            <a:rotation match="[@rotation]"></a:rotation>
+            <a:lock match="[@lock]"></a:lock>
+            <a:type match="[@type]"></a:type>
+            <a:caption match="[@caption]" default="Untitled block"></a:caption>
+            <a:cap-pos match="[@cap-pos]"></a:cap-pos>
+            <a:zindex match="[@zindex]"></a:zindex>
+            <a:image match="[@src]"></a:image>
+
+            <!-- Connection Binding Rules -->
+            <a:connection match="[block/connection]"></a:connection>
+            <a:ref match="[@ref]"></a:ref>
+            <a:blockinput match="[@input]"></a:blockinput>
+            <a:blockoutput match="[@output]"></a:blockoutput>
+            <a:blocklabel match="[@label]"></a:blocklabel>
+        </a:each>
+    </a:flowchart>
+</a:window>
+
+<a:script></a:script>
+
+</body>
+</html>

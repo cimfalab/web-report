@@ -1,0 +1,2514 @@
+<!DOCTYPE html>
+<!--
+Copyright 2011 Google Inc.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+Author: Eric Bidelman (ericbidelman@chromium.org)
+        Arne Roomann-Kurrik (kurrik@chromium.org)
+-->
+<html>
+<head>
+  <title>Trend Report: Why we have web at our fingertips</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="css/prettify.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet/less" type="text/css" href="css/slide-presentation.less">
+  <link rel="stylesheet/less" type="text/css" href="css/slide-content.less">
+    <script src="js/libs/less-1.0.41.min.js" async></script>
+
+  <style>
+    .fullslides {
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+    }
+    .center {
+        margin-left: auto;
+        margin-right: auto;
+        width: 70%;
+        top: 50%;
+    }
+    .blacks {
+        background-color: black;
+        color: white;
+        font-family: 'Ubuntu';
+    }
+    .blacks a {
+        color: white;
+        text-decoration: underline;
+    }
+    .centercontents .bottomWide {
+      bottom: 60px;
+      right: 0px;
+      left: 0px;
+      padding-left: 1em;
+    }
+    .centercontents .dark {
+      background-color: rgba(1, 1, 1, 0.7);
+    }
+    .centercontents div section {
+      background-color: rgba(255, 255, 255, 0.2);
+      border-radius: 10px;
+      color: white;
+      line-height: 1.1em;
+      margin: 0;
+      padding: 10px;
+      display: block;
+      position: absolute;
+      text-shadow: rgba(0, 0, 0, 0.2) 0 2px 5px;
+      max-width: 100%;
+    }
+    .centercontents div section h1, h2 {
+      font-size: 120%;
+      font-family: 'Permanent Marker';
+      text-shadow: black 0 2px 5px;
+    }
+    h2 a {
+        color: white;
+        text-decoration: underline;
+    }
+    .with-notes .image .note {
+        height: 341px;
+    }
+    .image aside.note section {
+        position: relative;
+        color: black;
+        background-color: rgba(252, 204, 0, 0.9);
+        height: 341px;
+    }
+    .with-notes .centercontents aside.note section {
+        position: absolute;
+        top: 10em;
+        background-color: rgba(252, 204, 0, 0.9);
+        height: 241px;
+    }
+    .moving {
+      -webkit-animation: agenda-slide 10s infinite ease-in-out;
+      -webkit-animation-delay: 0;
+      -webkit-animation-direction: normal;
+      -moz-animation: agenda-slide 10s infinite ease-in-out;
+      -moz-animation-delay: 0;
+      -moz-animation-direction: normal;
+      -moz-animation: agenda-slide 10s infinite ease-in-out;
+      -moz-animation-delay: 0;
+      -moz-animation-direction: normal;
+    }
+    .smaller {
+        font-size: 0.6em;
+    }
+    section.quote {
+        top: 47%;
+    }
+    section.quote img {
+        margin-left: -40px;
+    }
+
+    ::-webkit-scrollbar {
+        width: 12px;
+    }
+    ::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+        border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+    }
+
+    .col1 {
+        width: 45%;
+        float: left;
+        padding-right: 10px;	
+    }
+
+    .col2 {
+        width: 45%;
+        float: left;
+        padding-left: 10px;	
+    }
+
+    #ws-left h4 {
+        margin: 10px 0 0;
+    }
+
+    #ws-left input[type="text"] {
+        width: 370px;
+    }
+
+    #ws-right {
+        border-left: 1px solid #9A9AB3;
+        float: left;
+        padding-left: 20px;
+        width: 300px;
+    }
+
+    #wsConsoleLog {
+        -moz-border-bottom-colors: none;
+        -moz-border-image: none;
+        -moz-border-left-colors: none;
+        -moz-border-right-colors: none;
+        -moz-border-top-colors: none;
+        background-color: white;
+        border-color: #CCCCCC #999999 #999999 #CCCCCC;
+        border-right: 1px solid #999999;
+        border-style: solid;
+        border-width: 1px;
+        height: 175px;
+        overflow-y: auto;
+        padding: 5px;
+        width: 290px;
+    }
+
+    #wsSecureCbLabel {
+        left: -10px;
+        position: relative;
+    }
+
+    #ws-left input {
+        font-family: Helvetica;
+        font-size: 16px;
+        margin-right: 10px;
+        padding: 3px 5px;
+    }
+
+    @font-face { font-family: sangsang; src: url(fonts/SangSangBodyOTFM.otf); }
+    .sangsang {
+        font-family: sangsang;
+    }
+  </style>
+  <link rel="stylesheet" href="themes/default/default.css" type="text/css" media="screen" />
+  <link rel="stylesheet" href="themes/pascal/pascal.css" type="text/css" media="screen" />
+  <link rel="stylesheet" href="themes/orman/orman.css" type="text/css" media="screen" />
+  <script src="js/jquery-1.6.1.min.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+        $('#testbutton').bind('click', function() {
+            $('#profileform input').each(function () {
+                var valid = this.checkValidity();
+                if (!valid) {
+                    alert('input ' + this.type + ' is invalid!');
+                    this.focus();
+                }
+            });
+        });
+
+        $('a').attr("target", "_blank");
+    });
+  </script>
+</head>
+  <body>
+    <script type="text/html">
+      <!DOCTYPE html>
+      <html>
+        <style>h1 { font:18pt Arial; color: #ccc; text-align: center; }</style>
+        <body>
+          <h1>loading...</h1>
+        </body>
+      </html>
+    </script>
+
+    <div id="content" class="hidden">
+      <div id="bg-pattern" class="background"></div>
+      <div id="bg-white" class="background"></div>
+      <div id="bg-black" class="background"></div>
+      <div id="bg-google-blue" class="background"></div>
+      <div id="bg-blueprint" class="background"></div>
+      <div id="bg-google-darkblue" class="background"></div>
+      <div id="bg-google-green" class="background"></div>
+      <div id="bg-google-yellow" class="background"></div>
+      <div id="bg-google-red" class="background"></div>
+      <div id="bg-binary" class="background"></div>
+      <div id="bg-file" class="background"></div>
+      <div id="bg-clutter" class="background"></div>
+      <div id="bg-filecabinets" class="background"></div>
+      <div id="bg-audio" class="background"></div>
+      <div id="bg-declarative" class="background"></div>
+      <div id="bg-drawline" class="background"></div>
+      <div id="bg-degree" class="background"></div>
+
+
+<!--
+ *
+ * Preflight
+ *
+-->
+<div class="slide transparent centercontents" id="slide-preflight" data-backgroundid="bg-white">
+  <section>
+    <h2>Preflight</h2>
+    <div id="browser-webkit" class="hidden good feature">
+      <div><img src='images/icons/ok.png'/> Webkit</div>
+      <div class="explanation">
+        If using Google Chrome, you will likely need the Dev channel to see
+        all of the functionality in this presentation.  If you are using
+        Safari, you will likely need a nightly build of WebKit in order to
+        see all of the functionality in this presentation.
+      </div>
+    </div>
+    <div id="browser-mozilla" class="hidden warning feature">
+      <div><img src='images/icons/warning.png'/> Mozilla</div>
+      <div class="explanation">
+        You are running a Mozilla browser.  While such browsers generally have
+        excellent support for HTML5 features, this presentation has only
+        been tested using WebKit browsers such as
+        <a href="http://www.google.com/chrome">Google Chrome</a> or
+        <a href="http://www.apple.com/safari/">Safari</a>.
+        You should still be able to navigate the slides by using left/right
+        arrow keys, but will currently see display errors with regard
+        to the 3d rendering of the slides and some demo content.
+      </div>
+    </div>
+    <div id="browser-other" class="hidden bad feature">
+      <div><img src='images/icons/error.png'/> Other browser</div>
+      <div class="explanation">
+        You are running a browser that has not been tested with this
+        presentation.  You may not be able to run some or all of the samples
+        listed here.  While we want to add support for as many browsers as
+        possible, currently we only support WebKit-based browsers such as
+        <a href="http://www.google.com/chrome">Google Chrome</a> or
+        <a href="http://www.apple.com/safari/">Safari</a>.
+      </div>
+    </div>
+    <div id="feature-webgl" class="hidden good feature">
+      <div><img src='images/icons/ok.png'/> WebGL: available</div>
+    </div>
+    <div id="feature-no-webgl" class="hidden bad feature">
+      <div><img src='images/icons/error.png'/> WebGL: not supported</div>
+      <div class="explanation">
+        You will not be able to see the WebGL demos later in this slide deck.
+      </div>
+    </div>
+    <div id="feature-notification" class="hidden">
+      <div id="notification-on" class='hidden warning feature'>
+        <div><img src='images/icons/warning.png'/> Notification permission incorrect</div>
+        <div class="explanation">
+          You have granted permission for this page to show notifications.
+          If you intended to demo the request permission functionality, you
+          may want to clear this permission by clicking
+          <a href="javascript:resetNotifications();">here</a> and removing
+          the permission.
+        </div>
+      </div>
+      <div id="notification-off" class='hidden good feature'>
+        <div><img src='images/icons/ok.png'/> Notification permission correct</div>
+      </div>
+    </div>
+    <div id="feature-no-notification" class="hidden bad feature">
+      <div><img src='images/icons/error.png'/> No notification</div>
+      <div class="explanation">
+        Your browser does not support displaying notifications.  Currently,
+        only <a href="http://www.google.com/chrome">Google Chrome</a>
+        will support this functionality.
+      </div>
+    </div>
+    <div id="feature-file" class="hidden good feature">
+      <div><img src='images/icons/ok.png'/> File APIs: available</div>
+    </div>
+    <div id="feature-no-file" class="hidden bad feature">
+      <div><img src='images/icons/error.png'/> File APIs are not supported</div>
+      <div class="explanation">
+        Your browser does not support one or more of the following APIs:
+        <code>File</code>, <code>FileList</code>, <code>FileReader</code>.
+      </div>
+    </div>
+    <div id="feature-filesystem" class="hidden good feature">
+      <div><img src='images/icons/ok.png'/> File System API: available</div>
+    </div>
+    <div id="feature-no-filesystem" class="hidden bad feature">
+      <div><img src='images/icons/error.png'/> File System API: not supported</div>
+      <div class="explanation">
+        Your browser does not support the File System API for
+        reading/writing files and directories.
+      </div>
+    </div>
+    <div id="feature-filesystem-quota" class="hidden warning feature">
+      <div><img src='images/icons/warning.png'/> File System API: partial support</div>
+      <div class="explanation">
+        The File System API are available in your browser, but write access is
+        unavailable. Are you running Google Chrome with the <code>--unlimited-quota-for-files</code> flag?
+      </div>
+    </div>
+    <div id="feature-web-audio" class="hidden good feature">
+      <div><img src='images/icons/ok.png'/> Web Audio API: available</div>
+    </div>
+    <div id="feature-no-web-audio" class="hidden bad feature">
+      <div><img src='images/icons/error.png'/> Web Audio API: not supported</div>
+      <div class="explanation">
+        Your browser does not support the <a href="http://chromium.googlecode.com/svn/trunk/samples/audio/specification/specification.html">Web Audio API</a>.
+        If using Google Chrome, you need Mac OSX and to enable the API in <code>about:flags</code>.
+      </div>
+    </div>
+  </section>
+  <section>
+      <strong>If things look good, press <span class="key">&rarr;</span> to move on.</strong>
+  </section>
+</div>
+
+
+<!--
+ *
+ * Controls
+ *
+-->
+<div class="slide transparent centercontents" >
+  <aside class="note">
+    <section>
+      Welcome! (This field is for presenter notes and commentary.)
+    </section>
+  </aside>
+  <section>
+    Press:
+    <ul>
+      <li>Space or <span class="key">&larr;</span> / <span class='key'>&rarr;</span> to move around</li>
+      <li><span class="key">Ctrl/Command</span> / <span class='key'>–</span> or <span class='key'>+</span> to zoom in and out if slides don’t fit</li>
+      <li><span class="key">N</span> to show/hide speaker notes</li>
+      <li><span class="key">H</span> to highlight important elements in code snippets</li>
+    </ul>
+  </section>
+  <!--<section>
+    <a href="javascript:window.open('/remote', 'remoteWin', 'top=0,left=0,height=300,width=100,resizable=no,scrollbars=no,status=no')">Launch remote control</a>
+  </section>-->
+</div>
+
+
+<!--
+ *
+ * Title
+ *
+-->
+<div class="slide centercontents centertext" id="slide-title" data-backgroundid="bg-pattern">
+  <h1>Trend Report:<br>Why we have web at our fingertips</h1>
+  <section>
+  </section>
+  <section>
+    <strong>kh5325.kim@samsung.com</strong><br>
+  </section>
+  <section>
+    <time pubdate datetime="2011-09-22">Sep 22, 2011</time><br>
+    9:00 - 10:30am
+    <p class="smaller"><a href="http://www.google.com/events/io/2011/sessions/html5-showcase-for-web-developers-the-wow-and-the-how.html">This slide is authored in HTML5 (Eric Bidelman && Arne Roomann-Kurrik's work in Google I/O)</a></p>
+  </section>
+</div>
+
+
+<!--
+ *
+ * Value proposition
+ *
+-->
+<div class="slide centercontents" id="slide-value" data-backgroundid="bg-pattern">
+  <header>What I present</header>
+  <section>
+    <p>To show the trend for <strong>Web</strong></p>
+  </section>
+  <section data-build>
+    <p>I hope you think web<br/>as application platform</p>
+  </section>
+  <section data-build>
+    <p class="smaller">Please give WAC IDE team feedback!</p>
+    <p class="smaller">All documentation is at <a href="http://172.21.17.12/wiki/index.php/SLP-SDK_WAC">Wiki</a> and <a href="http://172.21.13.7/sdk/wac">Website</a></p>
+  </section>
+</div>
+
+
+<!--
+ *
+ * Today's Agenda
+ *
+-->
+<div class="slide centercontents" id="slide-agenda" data-backgroundid="bg-pattern">
+  <header>Today's agenda</header>
+  <section>
+    <div class="item">
+      <span class="sangsang">* 차인표 형님도 관심있어 하는..</span><br/>
+      <img src="images/HTML5_Badge_64.png" />
+      <span class="filetheme">HTML5</span>
+    </div>
+    <div class="item">
+      <img src="images/web.png" />
+      <span class="graphicstheme">Web Technology</span>
+    </div>
+    <div class="item">
+      <img src="images/js.png" />
+      <span class="audiotheme">JavaScript</span>
+    </div>
+    <div class="item">
+      <img src="images/SDK_64.png" />
+      <span class="theme">Web and IDE</span>
+    </div>
+  </section>
+</div>
+
+
+<!--
+ *
+ * TOPIC 1: HTML5
+ *
+-->
+<div class="slide transparent segue centercontents" data-backgroundid="bg-blueprint">
+  <h1>HTML5</h1>
+  <img src="images/HTML5_Badge_64.png">
+</div>
+
+
+<div class="slide transparent image" data-backgroundid="">
+  <div data-build>
+    <section class="bottomWide dark" data-auto>
+      <h1>History of HTML5</h1>
+    </section>
+  </div>
+</div>
+
+
+<div class="slide transparent image fullslides" data-backgroundid="bg-blueprint" style="background-image: url('../images/fullslides/html_timeline.png');">
+  <div data-build>
+  </div>
+  <span class="credit dark">
+    <a href="http://www.slideshare.net/Channy/history-and-status-of-html5-1675600"
+      >http://www.slideshare.net/Channy/history-and-status-of-html5-1675600</a>
+  </span>
+</div>
+
+
+<div class="slide transparent image fullslides" data-backgroundid="bg-blueprint" style="background-image: url('../images/fullslides/semantic_web_technology_stack.png');">
+  <div data-build>
+    <section class="bottomWide dark" data-auto>
+      <h2>W3C focuses XHTML. But...</h2>
+    </section>
+  </div>
+</div>
+
+
+<div class="slide transparent image fullslides" data-backgroundid="bg-blueprint" style="background-image: url('../images/fullslides/lowndes-fig2.gif');">
+  <div data-build>
+    <section class="bottomWide dark" data-auto>
+      <h2>Web 2.0, Ajax and REST API *</h2>
+      <h2>Web as application platfrom not as document</h2>
+    </section>
+  </div>
+  <span class="credit dark">
+    <a href="http://www.archimuse.com/mw2006/papers/lowndes/lowndes-fig2.html"
+      >http://www.archimuse.com/mw2006/papers/lowndes/lowndes-fig2.html</a>
+  </span>
+  <aside class="note">
+    <section>
+      <ul>
+        <li>REST = HTTP URI + Method ex.)) http://www.javastudy.co.kr/users/bcho (Method: GET)
+        <li>Twitter REST API: GET http://search.twitter.com/search.json?q=pieceoflena&callback=twitterCallback2&rpp=5
+      </ul>
+    </section>
+  </aside>
+</div>
+
+
+<div class="slide transparent image fullslides" data-backgroundid="bg-blueprint" style="background-image: url('../images/fullslides/whatwg.png');">
+  <div data-build>
+    <section class="bottomWide dark" data-auto>
+      <h2>W3C spec is so vast and ideal. We must give up HTML :(</h2>
+      <h2>Make our working group for Web Application*</h2>
+    </section>
+  </div>
+  <aside class="note">
+    <section class="sangsang">
+    W3C는 문서 구조, XML 도구와의 호환성, 그리고 시맨틱 웹에 대한 버너스 리의 <a href="http://www.ted.com/talks/tim_berners_lee_on_the_next_web.html">비전</a> 같은 이슈를 강조하는 XHTML 제안 표준을 사용해서 문서로서의 웹 페이지라는 초점을 유지해 왔다.</p>
+    Web Hypertext "Application" Technology WG (문서보다는 어플리케이션에 초점)
+    </section>
+  </aside>
+  <span class="credit dark">
+    <a href="http://www.slideshare.net/Channy/history-and-status-of-html5-1675600"
+      >http://www.slideshare.net/Channy/history-and-status-of-html5-1675600</a>
+  </span>
+</div>
+
+
+<div class="slide transparent image fullslides" data-backgroundid="bg-blueprint" style="background-image: url('../images/fullslides/timbl.png');">
+  <div data-build>
+    <section class="bottomWide dark" data-auto>
+      <h2>Tim Bernes Lee: <span style="font-family: 'Ubuntu';">gg</h2>
+      <h2>WHATWG: <span style="font-family: 'Ubuntu';">gg</h2>
+    </section>
+  </div>
+  <span class="credit dark">
+    <a href="http://dig.csail.mit.edu/breadcrumbs/node/166"
+      >http://dig.csail.mit.edu/breadcrumbs/node/166</a>
+  </span>
+</div>
+
+
+<div class="slide transparent image fullslides" data-backgroundid="bg-blueprint" style="background-image: url('../images/fullslides/w3c-html-process.png');">
+  <div data-build>
+    <section class="bottomWide dark" data-auto>
+      <h2>HTML 5.1</h2>
+      <h2><a href="http://blog.creation.net/533">the relationship between the WHATWG HTML living standard and the W3C HTML5 specification</a></h2>
+    </section>
+  </div>
+</div>
+
+
+<div class="slide transparent image" data-backgroundid="">
+  <div data-build>
+    <section class="bottomWide dark" data-auto>
+      <h1>Features of HTML5</h1>
+    </section>
+  </div>
+</div>
+
+
+<div class="slide centercontents">
+  <header>HTML5</header>
+  <section>
+    <p>8 technologies</p>
+    <a href="http://www.w3.org/html/logo/#the-technology"><img src="../images/html5-badge-h-connectivity-css3-device-graphics-multimedia-performance-semantics-storage.png" /></a><br/>
+    <span class="smaller">(Connectivity, CSS3 & Styling, Device Access, 3D & Effects, Multimedia, Performance & Integration, Semantics, Offline & Storage)</span>
+    <p>New features let you:</p>
+    <ul data-build>
+      <li><span class="theme1">Inter-operability</span> between browsers</li>
+      <li><span class="theme2">Compatibility</span> with HTML 4.01</li>
+      <li><span class="theme3">Productivity</span> for web developers</li>
+      <li><span class="theme4">Rich Web</span> like multimedia and offline storage</li>
+    </ul>
+  </section>
+</div>
+
+
+<div class="slide transparent image fullslides" data-backgroundid="bg-blueprint" style="background-image: url('../images/fullslides/browser-wars.jpg');">
+  <header><span class="theme1">Inter-operability</span></header>
+  <div data-build>
+    <section class="bottomWide dark" data-auto>
+      <h2>Just use HTML5 doctype</h2>
+      <h2><p style="font-family: 'Ubuntu';">&lt;!DOCTYPE html&gt;</h2>
+    </section>
+  </div>
+</div>
+
+
+<div class="slide centercontents" data-backgroundid="bg-blueprint">
+  <header><span class="theme3">Productivity</span> Structural Markup (1)</header>
+  <table><tr>
+  <td><img src="../images/markup1.png" /></td>
+  <td><div data-build><img src="../images/markup2.png" /></div></td>
+  </tr></table>
+</div>
+
+
+<div class="slide centercontents" data-backgroundid="bg-blueprint">
+  <header><span class="theme3">Productivity</span> Structural Markup (2)</header>
+  <table><tr>
+  <td align="top"><img src="../images/markup3.png" /></td>
+  <td><div data-build><img src="../images/markup4.png" /></div></td>
+  </tr></table>
+</div>
+
+
+<div class="slide transparent image fullslides" data-backgroundid="bg-blueprint" style="background-image: url('../images/fullslides/markup5.png');">
+  <div data-build>
+    <section class="bottomWide dark" data-auto>
+      <h2>Semantic Markup</h2>
+    </section>
+  </div>
+  <span class="credit dark">
+    <a href="http://www.slideshare.net/yiibu/beyond-themobilewebbyyiibu"
+      >http://www.slideshare.net/yiibu/beyond-themobilewebbyyiibu</a>
+  </span>
+</div>
+
+
+<div class="slide centercontents">
+  <header><span class="theme3">Productivity</span> Semantic Markup</header>
+  <section>
+    <pre>
+ - &lt;t lang="fr"&gt;je ne sais quoi&lt;/t&gt;
+ - &lt;time datetime="2011-09-20"&gt;a tuesday&lt;/time&gt;
+ - &lt;meter min="0" max="100" value="75"&gt;&lt;/meter&gt;
+ - &lt;progress value="33" max="100"&gt;<br/>    &lt;span id="p"&gt;33&lt;/span&gt;% // fallback<br/>   &lt;/progress&gt;
+</pre>
+  </section>
+  <div data-build>
+    <pre>
+ - <t lang="fr">je ne sais quoi</t>
+ - <time datetime="2011-09-20">a tuesday</time>
+ - <meter min="0" max="100" value="75"></meter>
+ - <progress value="33" max="100"><span id="p">33</span>%</progress>
+    </pre>
+  </div>
+</div>
+
+
+<div class="slide centercontents" data-backgroundid="bg-blueprint">
+  <header><span class="theme3">Rich Web</span> Web Forms</header>
+  <table><tr>
+  <td align="top"><img src="../images/contact-form-submit-with-errors.png" /></td>
+  <td valign="top" width="480"><div data-build>
+  <section>
+    <pre style="font-size: small;">
+function validate(field_name, field_value) {
+  // Fill validation codes
+  if (field_value == null || field_value == "") {
+    document.getElementById("email_status").innerHTML =
+        '&lt;div class="field_error"&gt;' + email_enter + '&lt;/div&gt;';
+  }
+...
+
+function regIsEmail(field_value) {
+var reg = new RegExp(
+    "^[0-9a-zA-Z]+@[0-9a-zA-Z]+[\.]{1}[0-9a-zA-Z]+[\.]?[0-9a-zA-Z]+$");
+...
+
+// If you want to use calendar, include it
+&lt;script src="js/calendar-lib.js"&gt;&lt;/script&gt;
+</pre>
+  </section>
+  </div></td>
+  </tr></table>
+
+  <div data-build>
+    <p>&raquo;It frustrated developers and made myth JavaScript is form validation language</p>
+  </div>
+</div>
+
+
+<div class="slide centercontents" data-backgroundid="bg-blueprint">
+  <header><span class="theme3">Rich Web</span> Web Forms</header>
+  <section>
+    <ul>
+      <form id="profileform">
+      <li>&lt;input type="number"&gt; <input type="number">
+      <li>&lt;input type="range" min="1" max="5" value="3"&gt; <input type="range" min="1" max="5" value="3">*
+      <li>&lt;input type="date"&gt; <input type="date">
+      <li>&lt;input type="email" placeholder="1@abc.com" required autofocus&gt; <input type="email" placeholder="1@abc.com" required autofocus>
+      <li>&lt;input pattern="[a-zA-Z]{4,6}"&gt; <input pattern="[a-zA-Z]{4,6}">
+
+      <!--
+      <input id="password2" type=password onforminput="setCustomValidity(value != password1.value ? 'Not matched!' : '')">
+      -->
+
+      <p><input type="button" id="testbutton" value="Validate!"><input type="submit" value="Submit"></p>
+      </form>
+      <p class="clickable"><a href="http://dev.opera.com/articles/view/new-form-features-in-html5">More features...</a> | <a href="http://www.w3.org/TR/html5/the-input-element.html#the-input-element">HTML5 input element</a></p>
+    </ul>
+  </section>
+  <aside class="note">
+    <section>
+      <ul>
+        <li class="sangsang">Graceful Degradation: advanced form이 지원되지 않는 브라우저에서는 단순히 값이 1로 설정된 텍스트 상자로 표시된다. (보통의 텍스트 상자로 단계적으로 성능 축소)
+      </ul>
+    </section>
+  </aside>
+</div>
+
+
+<div class="slide centercontents" data-backgroundid="bg-blueprint">
+  <header><span class="theme5">Rich Web</span> Multimedia</header>
+  <section>
+    <pre>&lt;video src="http://www.double.co.nz/video_test/transformers480.ogg" controls&gt;
+  &lt;div class="no-html5-video"&gt;&lt;/div&gt;
+&lt;/video&gt;</pre>
+  </section>
+  <section>
+        <p><video src="http://www.double.co.nz/video_test/transformers480.ogg" controls>
+          <div class="no-html5-video"><p></p></div>
+        </video></p>
+  </section>
+  <div data-build>
+    <section class="bottomWide dark" data-auto>
+      <h2>No embedded plugin object like Flash</h2>
+    </section>
+  </div>
+</div>
+
+
+<div class="slide centercontents" data-backgroundid="bg-blueprint">
+  <header><span class="theme3">Rich Web</span> Offline Storage & GeoLocation</header>
+  <section>
+    <ul>
+      <li>Application Cache*
+        <ul>
+          <li>Offline browsing: <a href="http://googlekoreablog.blogspot.com/2011/09/blog-post.html">Gmail Offline</a>
+          <li>Performance: <a href="http://engineering.twitter.com/2011/09/twitters-mobile-web-app-delivers_14.html">Twitter’s mobile web app delivers performance</a>
+          <li>Decreasing server load
+        </ul>
+      <li>Web Storage (1)
+        <ul>
+          <li><a href="http://m.mkexdev.net/111">localStorage</a>*: <a href='javascript:localStorage.setItem("name", "Hello World!");'>Try It!</a>
+            <pre>localStorage.setItem("name", "Hello World!");</pre>
+          <li>sessionStorage
+        </ul>
+    </ul>
+  </section>
+  <aside class="note">
+    <section>
+      <ul>
+        <li><a href="http://xguru.net/621">HTML5 API 강좌 #1 – Web Storage 와 Application Cache</a>
+        <li><a href="demos/appcache.manifest">appcache.manifest</a>
+        <li>리소스 파일이 변경되었는지가 아니라 manifest 파일내용 자체가 변경되었는지를 체크(바이트 단위)한다. 만약 캐쉬된 파일의 내용이 바뀌었다면 manifest 파일 자체를 수정해서 다시 로드되도록 해야 한다. (파일의 코멘트 부분에 수정한 날짜나 버전을 적어놓는 등의 방법 이용)
+        <li>리소스가 변경되었더라도 2번째 접속 자체는 처음의 캐쉬를 이용하게 된다. 백그라운드에서 캐쉬 업데이트 프로세스가 진행되고 업데이트가 완료되면 Javascript 이벤트가 발생하게 되며, 이때 강제로 캐쉬를 교체(swapCache)해야만 수정된 캐쉬가 화면에 보여지게 된다.
+        <li>로컬 스토리지는 도메인별로 작동한다. 따라서 브라우저 재기동시에도 그 도메인에 가면 해당 정보를 로컬에서 불러올 수 있다.
+      </ul>
+      <ul>
+        <li>최근 모듈 로더에서는 HTML5의 로컬 스토리지(localStorage) 연동을 활용하는 사례가 나타나고 있다. 즉, 기존에 모듈을 원격 서버에서 불러오던 것을 로컬 스토리지를 활용해 성능을 극대화하는 것이다. 물론 버전에 따른 의존성은 모두 모듈 로더가 책임진다.
+        <li><a href="https://github.com/zazl/lsjs">https://github.com/zazl/lsjs</a>
+      </ul>
+    </section>
+  </aside>
+</div>
+
+
+<div class="slide centercontents" data-backgroundid="bg-blueprint">
+  <header><span class="theme3">Rich Web</span> Offline Storage & GeoLocation</header>
+  <section>
+    <ul>
+      <li>Web Storage (2)
+        <ul>
+          <li>Web SQL Database
+            <pre>
+var db = window.openDatabase("TestDB", "1.0", "Test DB", "2*1024*1024");
+db.transaction(function (tx) {
+  tx.executeSql('CREATE TABLE works(subject, memo)');
+  tx.executeSql('INSERT INTO works(subject, memo) VALUES ("Item1", "Memo1")');
+});</pre>
+      <li>GeoLocation
+            <pre>
+void navigator.geolocation.getCurrentPosition(
+    successCb, errorCb, options);
+long navigator.geolocation.watchPosition(
+    successCb, errorCb, options);
+void clearWatch(watchID);
+
+function show_position(position) {
+  // position.coords.latitude, position.coords.longitude</pre>
+        </ul>
+    </ul>
+  </section>
+</div>
+
+
+<div class="slide centercontents" data-backgroundid="bg-blueprint">
+  <header><span class="theme5">Rich Web</span> 2D Canvas*</header>
+  <section>
+    <ul>
+      <li><a href="space_demo/site/index.html">Play Galaxy lite!</a>
+      <li><pre>canvas.getContext('2d').drawImage(sprite_image, ...);</pre>
+      <section class="margin: 0;">
+        <img class="cutout" style="margin: 0; max-height: 100px" src="../../demos/canvas-sprite/spritesheet.png" />
+      </section>
+      <section data-build>
+        <iframe style="border: 0; width:805px; height: 255px; " data-src="../demos/canvas-sprite/index.html"></iframe>
+      </section>
+    </ul>
+  </section>
+  <aside class="note">
+    <section>
+      Library using canvas
+      <ul>
+        <li><a href="http://www.rgraph.net/">RGraph</a>
+      </ul>
+      WebGL
+      <ul>
+        <li>3d context: WebGL
+        <li><a href="http://www.myrobotnation.com/">My Robot Nation</a>
+      </ul>
+    </section>
+  </aside>
+</div>
+
+
+<div class="slide centercontents" id="slide-svg">
+  <header><span class="theme5">Rich Web</span> SVG</header>
+  <section class="wide">
+    <pre>&lt;textPath method="align" spacing="auto"
+          xlink:href="#svgTextPath"&gt;
+  &lt;tspan&gt;Sometimes I have to put text on a path&lt;/tspan&gt;
+&lt;/textPath&gt;</pre>
+    <div data-build>
+      <div>
+        <svg width="100%" height="300px"
+             version="1.1" viewBox="0 0 800 300" preserveAspectRatio="none">
+          <defs>
+            <path id="svgTextPath"
+                  d="M 0,50
+                     C 200,50 200,300 400,150
+                     C 600,0 600,300 800,295" />
+          </defs>
+          <style type="text/css"><![CDATA[
+            .Text { font: 45px Verdana; fill: blue }
+            .Line { fill: none; stroke: red; stroke-width:3 }
+          ]]></style>
+          <use class="Line" xlink:href="#svgTextPath" />
+          <text class="Text">
+            <textPath method="align" spacing="auto"
+                      xlink:href="#svgTextPath">
+              <tspan>Sometimes I have to put text on a path</tspan>
+            </textPath>
+          </text>
+        </svg>
+      </div>
+      <input class="wide" type="text" value="Sometimes I have to put text on a path">
+    </div>
+  </section>
+</div>
+
+
+<div class="slide transparent image fullslides" data-backgroundid="bg-blueprint" style="background-image: url('../images/fullslides/d3.png');">
+  <div data-build>
+    <section class="bottomWide dark" data-auto>
+      <h2>&raquo;<a href="http://d3js.org/">Visualization library using SVG D3.js</a>
+      <h2>&raquo;<a href="/data/flare.json">data</a> to graphics (<a href="/d3/bubble/bubble.html">Bubble</a>, <a href="/d3/tree/tree-interactive.html">Tree</a>, <a href="/d3/treemap/treemap.html">TreeMap</a>)
+    </section>
+  </div>
+</div>
+
+
+<div class="slide centercontents" data-backgroundid="bg-blueprint">
+  <header><span class="theme5">Rich Web</span> data-* attributes</header>
+  <section>
+    <ul>
+      <li>Configuring behavioral options or associating content enhancements
+      <li>Treated as a storage area for private data (private in the sense that the end user can't see it - it doesn't affect layout or presentation).
+      <section data-build>
+        <li class="sangsang"><a href="http://www.slideshare.net/iolo/ss-10414146">하이브리드앱 아키텍쳐 및 개발 사례</a>
+        <pre>&lt;button&gt;&lt;span data-nls="common.back"&gt;Back&lt;/span&gt;&lt;/button&gt;</pre>
+        <pre>$.get('locales/'+lang+'/messages.json',function(messages){
+        $.each(document.body).find(‘*[data-nls]’).each(function(index,node){
+        var key=node.attr(‘data-nls’);
+        var message=messages[key];
+        node.html(message);</pre>
+        </li>
+        <li><a href="http://jquerymobile.com/demos/1.1.0-rc.1/docs/api/data-attributes.html">jQuery Mobile Data- attribute reference</a> <img valign="top" src="/images/jqm.jpg"></img></li>
+      </section>
+    </ul>
+  </section>
+</div>
+
+
+<div class="slide transparent image" data-backgroundid="">
+  <div data-build>
+    <section class="bottomWide dark" data-auto>
+      <h1>CSS3</h1>
+    </section>
+  </div>
+</div>
+
+
+<div class="slide centercontents" id="slide-cssprops">
+  <header><span class="theme2">Declare</span> CSS: Too much awesome to cover</header>
+  <section class="wide">
+    <span class="demo-text-shadow">text-shadow</span>
+    <span class="demo-text-outline">text-outline</span>
+    <span class="demo-box-shadow">box-shadow</span>
+    <span class="demo-border-radius">border-radius</span>
+    <span class="demo-gradient">gradient</span>
+    <span class="demo-transform">transform</span>
+    <span class="demo-transition">transition</span>
+    <span class="demo-border-image">border-image</span>
+    <span class="demo-font-face">font-face</span>
+    <span class="demo-text-overflow">text-overflow</span>
+  </section>
+</div>
+
+
+<div class="slide centercontents" data-backgroundid="bg-blueprint">
+  <header><span class="theme3">Productivity</span> CSS3</header>
+  <section>
+<style>
+.rounded {
+    border-radius:8px;
+}
+</style>
+
+<div align="center" class="rounded" style="background-color:#9C084A; color:#FFFFFF; font-weight: bold; font-size: 18px; width: 640px; height: 120px;">
+Rounded Corner
+</div>
+    <ul>
+      <li><a href="demos/rounded.html">Table code is complex and required some images</a>
+      <li>CSS3 provides just a simple property!
+    <pre>
+&lt;style&gt;
+.rounded {
+    border-radius:8px;
+}
+&lt;/style&gt;
+
+&lt;div class="rounded" /&gt;
+    </pre>
+  </section>
+</div>
+
+
+<!--
+ *
+ * GRAPHICS: Tweening
+ *
+-->
+<div class="slide centercontents" id="slide-tween">
+  <header><span class="theme2">Declare</span> Tweens</header>
+  <section>
+    <pre>linear
+ease-in
+ease-out
+ease-in-out
+cubic-bezier(<span class="val lit">0.9</span>, <span class="val lit">0.1</span>, <span class="val lit">0.1</span>, <span class="val lit">0.9</span>);</pre>
+    <select>
+      <option selected>cubic-bezier</option>
+      <option>linear</option>
+      <option>ease-in</option>
+      <option>ease-out</option>
+      <option>ease-in-out</option>
+    </select>
+  </section>
+  <section class="columns">
+    <div class="column">
+      <div class="logo">&nbsp;</div>
+    </div>
+    <div class="column">
+      <canvas></canvas>
+      <button>Animate</button>
+    </div>
+  </section>
+</div>
+
+
+<div class="slide transparent image fullslides" data-backgroundid="bg-blueprint" style="background-image: url('../images/fullslides/less.png');">
+  <div data-build>
+    <section class="bottomWide dark" data-auto>
+      <h2>LESS</h2>
+      <h2>&raquo;<a href="http://twitter.github.com/bootstrap/less.html#variables">Variables</a> and <a href="http://twitter.github.com/bootstrap/less.html#mixins">Mixins</a>*</h2>
+    </section>
+  </div>
+  <aside class="note">
+    <section>
+      <pre>
+Need 3 declarations:
+  -webkit-border-radius:15px;
+  -moz-border-radius:15px;
+  border-radius:15px;
+      </pre>
+      <pre>
+Using mixin:
+  .border-radius(15px);
+      </pre>
+    </section>
+  </aside>
+</div>
+
+
+<div class="slide centercontents">
+  <header><span class="theme5">Rich Web</span> WebSocket</header>
+  <section class="wide">
+	<pre>
+    var socket = new <b>WebSocket</b>('ws://echo.websocket.org/');
+    socket.<b>onopen</b> = function(event) {
+        socket.<b>send</b>('Hello, WebSocket');
+    };
+    socket.<b>onmessage</b> = function(event) { alert(event.data); }
+    socket.<b>onclose</b> = function(event) { alert('closed'); }</pre>
+	
+    <p style="font-size: 20px;">Full-duplex, bi-directional communication over the Web: Both the server and client can send data at any time, or even at the same time. Only the data itself is sent, without the overhead of HTTP headers, dramatically reducing bandwidth.</p>
+
+    <div id="ws-left" class="col1"><br/>
+        <div id="ws-config-location">
+          <h4 style="font-size: 16px;">Location:</h4>
+          <input type="text" id="wsUri" disabled />
+          <br>
+          <input type="checkbox" id="wsSecureCb" onclick="wsToggleTls();" disabled />
+          <label id="wsSecureCbLabel" for="wsSecureCb" style="font-size: 16px;">Use secure WebSocket (TLS/SSL)</label>
+          <br>
+          <button id="wsConnectBut" disabled>Connect</button>
+          <button id="wsDisconnectBut" disabled>Disconnect</button>
+        </div>
+        <div id="ws-config-message">
+          <h4 style="font-size: 16px;">Message:</h4>
+          <input  type="text" id="wsMessage" value="Hello, WebSocket" disabled />
+          <button id="wsSendBut" disabled>Send</button>
+        </div>
+      </div>
+      <div id="ws-right" class="col2">
+        <div id="ws-log">
+          <strong style="font-size: 16px;">Output:</strong>
+          <div id="wsConsoleLog" style="font-size: 16px;"></div>
+          <button id="wsClearLogBut">Clear log</button>
+        </div>
+      </div>
+      <script src="js/websocket.js" defer></script>
+  </section>
+</div>
+
+
+<div class="slide transparent image fullslides" data-backgroundid="bg-blueprint" style="background-image: url('../images/fullslides/ws.png');">
+  <div data-build>
+    <section class="bottomWide dark" data-auto>
+      <h2>WebSocket</h2>
+      <h2>It enables real-time communication like trading system, remote inspector, hybrid app and <a href="http://pieceoflena.no.de/chat">chat</a>*</h2>
+    </section>
+  </div>
+  <span class="credit dark">
+    <a href="http://demo.kaazing.com/forex/"
+      >http://demo.kaazing.com/forex/</a>
+  </span>
+  <aside class="note">
+    <section>
+      <ul>
+        <li><a href="http://www.slideshare.net/VikGamov/websockets-the-current-state-of-the-most-valuable-html5-api-for-java-developers">WebSockets: The Current State of the Most Valuable HTML5 API for Java Developers</a>
+      </ul>
+    </section>
+  </aside>
+</div>
+ 
+
+<div class="slide transparent image fullslides" data-backgroundid="bg-blueprint" style="background-image: url('../images/fullslides/safari5.1.2-target.jpg');">
+  <div data-build>
+    <section class="bottomWide dark" data-auto>
+      <h2>Remote Debugging using WebSocket</h2>
+    </section>
+  </div>
+  <span class="credit dark">
+    <a href="http://demo.kaazing.com/forex/"
+      >http://demo.kaazing.com/forex/</a>
+  </span>
+</div>
+
+
+<div class="slide">
+  <header><span class="theme5">Rich Web</span> Web Workers</header>
+  <section>
+main.js:
+    <pre>
+var worker = new Worker('task.js');
+worker.onmessage = function(event) { alert(event.data); };
+worker.postMessage('data');
+    </pre>
+task.js:
+    <pre>
+self.onmessage = function(event) {
+  // Do some work.
+  self.postMessage("recv'd: " + event.data);
+};
+    </pre>
+    <a href="http://slides.html5rocks.com/#web-workers">Try it!</a>
+  </section>
+</div>
+
+
+<div class="slide centercontents" data-backgroundid="bg-blueprint">
+  <header><span class="theme5">Rich Web</span></header>
+  <section class="sangsang">
+    <ul>
+      <li>기존의 리치 웹 기술은 읽을 수 없는 바이너리를 포함하고 있으며, 이는 웹 본질과 일치하지 않는다.
+      <li>웹은 읽을 수 있고(readable), 저장할 수 있고(indexable), 편집할 수 있어야(editable) 한다.
+    </ul>
+    <ul>
+      <li>인덱스 불가능한 정보를 인덱스 가능한 상태로 바꾸려는 노력 <img src="http://chart.apis.google.com/chart?cht=p3&chd=s:FI&chs=200x100&chl=Firefox|IE"></img>
+        <pre>http://chart.apis.google.com/chart?cht=p3&chd=s:FI&chs=200x100&chl=Firefox|IE</pre>
+        (Try bar chart "bvg")
+      <li>Easy to crack?! ex.)) <a href="http://thenextweb.com/apps/2011/05/11/angry-birds-for-chrome-already-hacked-unlocking-all-levels/">Angry Birds for Chrome</a>
+      <li>클라우드와의 결합 <a href="http://blogs.msdn.com/b/eva/archive/2011/08/31/power-of-html5.aspx">HTML5의 파워는 클라우드에서 나온다.</a>
+    </ul>
+  </section>
+</div>
+
+
+<div class="slide centercontents" data-backgroundid="" style="background: black;">
+  <section class="blacks center" data-auto>
+     <p>Okay, I got to know HTML5 is good.</p>
+     <p>But, the final specification will not be available soon!</p>
+     <p>Do I study HTML5 already?</p>
+  </section>
+</div>
+
+
+<div class="slide transparent image fullslides" data-backgroundid="bg-blueprint" style="background-image: url('../images/fullslides/whites.jpg');">
+  <section class="quote"><img src="../images/quote.png"></section>
+  <section class="dark blacks center" data-auto>
+    I definitely think you must know HTML5 right now:
+    <ul>
+      <li>Perfect specification is different from implementation
+      <li><a href="http://html5test.com/results.html">Modern browsers</a>
+      <li>It's just not the tags or APIs. It is the <a href="http://platform.html5.org/">platform</a>.
+    </ul>
+  </section>
+</div>
+
+<div class="slide transparent image fullslides" data-backgroundid="bg-blueprint" style="background-image: url('../images/fullslides/whites.jpg');">
+  <section class="quote"><img src="../images/quote.png"></section>
+  <section class="dark blacks center" data-auto>
+    <span class="sangsang">HTML5의 큰 변화</span> - HTML5 is upgraded to rich client platform from simple document viewer by:
+    <ul>
+      <li>Local Storage
+      <li>WebSocket*
+      <li>Multimedia
+    </ul>
+  </section>
+  <aside class="note">
+    <section>
+      <pre>
+Before WebSocket: AJAX long polling
+- <a href="http://helloworld.naver.com/index.php?mid=textyle&vid=helloworld&page=4&document_srl=1052"><span class="sangsang">RTCS 실시간 웹 서비스를 위한 도전</span></a>
+- <a href="http://www.ibm.com/developerworks/kr/library/wa-reverseajax1/index.html"><span class="sangsang">Reverse Ajax</span></a>
+
+WebSocket: SOA and Enterprise Web Application
+- <a href="http://w3labs.kr/?p=2464"><span class="sangsang">HTML5 웹소켓이 필요한 5가지 경우</span></a>
+      </pre>
+    </section>
+  </aside>
+</div>
+
+
+<div class="slide transparent image fullslides" data-backgroundid="bg-blueprint" style="background-image: url('../images/fullslides/admob.png');">
+  <div data-build>
+    <section class="bottomWide dark" data-auto>
+      <h1>...Especially in mobile web</h1>
+    </section>
+  <span class="credit dark">
+    <a href="http://metrics.admob.com/"
+      >May 2010 Mobile Metrics Report</a>
+  </span>
+  </div>
+</div>
+
+
+<div class="slide transparent image fullslides" data-backgroundid="bg-blueprint" style="background-image: url('../images/fullslides/whites.jpg');">
+  <section class="quote"><img src="../images/quote.png"></section>
+  <section class="dark blacks center" data-auto>
+    I will present how web technology including HTML5 pervade life in the next chapter
+  </section>
+</div>
+
+
+<!--
+ *
+ * TOPIC 2: Web Technology
+ *
+-->
+<div class="slide transparent segue centercontents" data-backgroundid="bg-blueprint">
+  <h1>Web Technology</h1>
+</div>
+
+
+<div class="slide transparent image fullslides" data-backgroundid="bg-blueprint" style="background-image: url('../images/fullslides/devices1.png');">
+  <div data-build>
+    <section class="bottomWide dark" data-auto>
+      <h2>That's not all</h2>
+    </section>
+  </div>
+</div>
+
+
+<div class="slide transparent image fullslides" data-backgroundid="bg-blueprint" style="background-image: url('../images/fullslides/devices2.png');">
+  <div data-build>
+    <section class="bottomWide dark" data-auto>
+      <h2>Huge device market!</h2>
+    </section>
+  </div>
+</div>
+
+
+<div class="slide transparent image fullslides" data-backgroundid="bg-blueprint" style="background-image: url('../images/fullslides/wac.png');">
+  <div data-build>
+    <section class="bottomWide dark" data-auto>
+      <h2>...And WAC</h2>
+    </section>
+  </div>
+</div>
+
+
+<div class="slide transparent image fullslides" data-backgroundid="bg-blueprint" style="background-image: url('../images/fullslides/standard.jpg');">
+  <div data-build>
+    <section class="bottomWide dark" data-auto>
+      <h2>Global Standard</h2>
+    </section>
+  </div>
+  <span class="credit dark">
+    <a href="http://bigduck.tistory.com/category/%EC%A0%9C%EB%A9%8B%EB%8C%80%EB%A1%9C%20%EB%A6%AC%EB%B7%B0?page=2"
+      >http://bigduck.tistory.com/category/%EC%A0%9C%EB%A9%8B%EB%8C%80%EB%A1%9C%20%EB%A6%AC%EB%B7%B0?page=2</a>
+  </span>
+</div>
+
+
+<div class="slide transparent image fullslides" data-backgroundid="bg-blueprint" style="background-image: url('../images/fullslides/whites.jpg');">
+  <section class="quote"><img src="../images/quote.png"></section>
+  <section class="dark blacks center" data-auto>
+    How about big players?
+  </section>
+</div>
+
+
+<div class="slide transparent image fullslides" data-backgroundid="bg-blueprint" style="background-image: url('../images/fullslides/600_steve_jobs_apple_obit_111005.jpg');">
+  <div data-build>
+    <section class="bottomWide dark" data-auto>
+      <h2><a href="http://www.cu114.com/gn/page/rss/win.php?idx=5069">Apple likes HTML5</a></h2>
+      <h2><a href="http://blogs.adobe.com/conversations/2011/11/flash-focus.html">Flash to Focus on PC Browsing and Mobile Apps; Adobe to More Aggressively Contribute to HTML5</a></h2>
+    </section>
+  </div>
+</div>
+
+
+<div class="slide transparent image fullslides" data-backgroundid="bg-blueprint" style="background-image: url('../images/fullslides/google.png');">
+  <div data-build>
+    <section class="bottomWide dark" data-auto>
+      <h2>Google likes HTML5, too<br/>Check <a href="http://www.youtube.com/watch?v=AusOPz8Ww80">Google I/O 2009</a></h2>
+    </section>
+  </div>
+</div>
+
+
+<div class="slide transparent image fullslides" data-backgroundid="bg-blueprint" style="background-image: url('../images/fullslides/image.axd.png');">
+  <div data-build>
+    <section class="bottomWide dark" data-auto>
+      <h2>Even Microsoft likes web!</h2>
+      <h2>I will give some images in <a href="http://www.buildwindows.com/">BUILD</a></h2>
+    </section>
+  </div>
+  <span class="credit dark">
+    <a href="http://www.buildwindows.com/"
+      >http://www.buildwindows.com/</a>
+  </span>
+</div>
+
+
+<div class="slide" data-backgroundid="bg-blueprint">
+  <header>Windows 8 BUILD</header>
+  <iframe src="build.html" frameborder="0" scrolling="yes" width="100%" height="94.7%"></iframe>
+</div>
+
+
+<div class="slide transparent image fullslides" data-backgroundid="bg-blueprint" style="background-image: url('../images/fullslides/angry_birds.png');">
+  <div data-build>
+    <section class="bottomWide dark" data-auto>
+      <h2><a href="http://chrome.angrybirds.com/">Angry Birds</a> (WebGL + Canvas)</h2>
+    </section>
+  </div>
+</div>
+
+
+<div class="slide transparent image fullslides" data-backgroundid="bg-blueprint" style="background-image: url('../images/fullslides/slideshare.png');">
+  <div data-build>
+    <section class="bottomWide dark" data-auto>
+      <h2><a href="http://engineering.slideshare.net/2011/09/slideshare-ditches-flash-for-html5/">SlideShare Ditches Flash for HTML5</a>*</h2>
+    </section>
+  </div>
+  <aside class="note">
+    <section>
+      <ul>
+        <li>30% Faster and 40% Smaller
+        <li>Support for Apple iOS
+        <li>Easier to copy & paste in browser
+        <li>Semantic and accessible. Google can parse it and index the documents.
+        <li>Cloud Computing: an army of hundreds of Amazon EC2 instances is crunching away at converting the *millions* and *millions* of presentations and documents (a font extractor, a font generator, etc)
+      </ul>
+    </section>
+  </aside>
+</div>
+
+
+<div class="slide transparent image fullslides" data-backgroundid="bg-blueprint" style="background-image: url('../images/fullslides/mozilla-b2g.png');">
+  <div data-build>
+    <section class="bottomWide dark" data-auto>
+      <h2>Mozilla B2G(Boot to Gecko) - Mozilla open source operating system project (aka Firefox OS)</h2>
+      <h2>&raquo;<a href="http://www.zdnet.co.kr/news/news_view.asp?artice_id=20120703133050&type=xml"><span class="sangsang">파이어폭스, 내년엔 스마트폰OS…잘 될까</span></a></h2>
+      <h2>&raquo;<a href="http://browserquest.mozilla.org/">BrowserQuest</a></h2>
+    </section>
+  </div>
+</div>
+
+
+<div class="slide transparent image fullslides" data-backgroundid="bg-blueprint" style="background-image: url('../images/fullslides/playboy.png');">
+  <div data-build>
+    <section class="bottomWide dark" data-auto>
+      <h2>...And Playboy loves HTML5</h2>
+      <h2>&raquo;<a href="http://www.bloter.net/archives/53026">Case of Readability</a>, <a href="http://www.iamday.net/apps/article/talk/1764/view.iamday"><span class="sangsang">카카오톡의 위기</span></a></h2>
+    </section>
+  </div>
+  <span class="credit dark">
+    <a href="http://i.playboy.com/"
+      >http://i.playboy.com/</a>
+  </span>
+</div>
+
+
+<div class="slide transparent image" data-backgroundid="">
+  <div data-build>
+    <section class="bottomWide dark" data-auto>
+      <h1>Mobile Web</h1>
+    </section>
+  </div>
+</div>
+
+
+<div class="slide transparent image fullslides" data-backgroundid="bg-blueprint" style="background-image: url('../images/fullslides/mobile_web.png');">
+  <div data-build>
+    <section class="bottomWide dark" data-auto>
+      <h2>It's like Web 2.0</h2>
+    </section>
+  </div>
+</div>
+
+
+<div class="slide transparent image fullslides" data-backgroundid="bg-blueprint" style="background-image: url('../images/fullslides/responsive.png');">
+  <div data-build>
+  </div>
+  <span class="credit dark">
+    <a href="http://www.slideshare.net/yiibu/beyond-themobilewebbyyiibu"
+      >http://www.slideshare.net/yiibu/beyond-themobilewebbyyiibu</a>
+  </span>
+</div>
+
+
+<div class="slide centercontents" data-backgroundid="bg-blueprint">
+  <header>Responsive Web Design (aka N-Screen)</header>
+  <section>
+    <ul>
+      <li>Mobile Viewport Declaration
+        <pre>&lt;meta name="viewport" content="width=device-width" /&gt;</pre>
+      <li>CSS3 Media Queries
+        <ul>
+          <li>Resolution dependent layout</a>
+          <li>Example: <a href="http://html5rocks.com">html5rocks.com</a> with Safari
+        </ul>
+      <li>Optimization
+        <ul>
+          <li>Amazon SILK
+        </ul>
+      <li>Contextual Data
+    </ul>
+  </section>
+</div>
+
+
+<div class="slide transparent image fullslides" data-backgroundid="bg-blueprint" style="background-image: url('../images/fullslides/netflix.png');">
+  <div data-build>
+    <section class="bottomWide dark" data-auto>
+      <h2>They leverage HTML5 for extreme multi-platform (over 400 devices)</h2>
+    </section>
+  </div>
+</div>
+
+
+<div class="slide centercontents" data-backgroundid="bg-blueprint">
+  <header>Cross Platform Leverage</header>
+  <section>
+    <ul>
+      <li>native WITH Web
+        <ul>
+          <li><a href="http://www.bloter.net/archives/75077"><span class="sangsang">모바일웹 담은 새 '네이버' 앱</span></a>
+          <li><a href="http://functionsource.com/post/cross-platform-leverage-not-about-write-once-run-everywhere-not-about-native-vs-web">unscientific research</a>
+            <pre>
+dion@laptop $ grep UIWebView *.ipa |wc -l
+205
+dion@laptop $ ls -al *.ipa |wc -l
+415</pre>
+        </ul>
+      <li>Web deployment model
+        <ul>
+          <li>A/B testing
+          <li>Constantly changing UI
+        </ul>
+    </ul>
+  </section>
+</div>
+
+
+<div class="slide transparent image fullslides" data-backgroundid="bg-blueprint" style="background-image: url('../images/fullslides/whites.jpg');">
+  <section class="quote"><img src="../images/quote.png"></section>
+  <section class="dark blacks center" data-auto>
+    I introduced why web using HTML5/CSS3 technology has been so a trend.<br/>
+    And our next is JavaScript.
+  </section>
+</div>
+
+
+<!--
+ *
+ * TOPIC 3: JavaScript
+ *
+-->
+<div class="slide transparent segue centercontents" data-backgroundid="bg-blueprint">
+  <h1>JavaScript</h1>
+</div>
+
+
+<div class="slide transparent image fullslides" data-backgroundid="bg-blueprint" style="background-image: url('../images/fullslides/the_secret.png');">
+  <div data-build>
+    <section class="bottomWide dark" data-auto>
+      <h2>Brendan Eich, 1995, Netscape</h2>
+    </section>
+  </div>
+  <span class="credit dark">
+    <a href="http://bodil.github.com/coffeescript/"
+      >http://bodil.github.com/coffeescript/</a>
+  </span>
+</div>
+
+
+<div class="slide centercontents" data-backgroundid="bg-blueprint">
+  <header>The Bad Parts</header>
+  <section>
+    <ul>
+      <li>Global variables
+      <li>No block scope
+        <pre>
+function test() {
+    var1 = "inner";
+}
+
+test();
+alert(var1);</pre>
+      <li>The <code>with</code> block
+      <li>Deal with the == operator
+        <pre>
+2 === "2"; // false - obviously a number is not a string
+2 == "2";  // true</pre>
+      <li>Semicolon
+    </ul>
+  </section>
+</div>
+
+
+<div class="slide centercontents" data-backgroundid="bg-blueprint">
+  <header>Do you know JavaScript?</header>
+  <section>
+    <ul>
+      <li>Douglas Crockford
+        <ul>
+          <li>Discovered Good Parts
+          <li><a href="http://javascript.crockford.com/javascript.html">The World's Most Misunderstood Programming Language</a>
+            <ul>
+              <li>Myths and Truths
+                <ul>
+                  <li>It is subset of Java (It's name is Java-)
+                  <li>It is not object-oriented (It doesn't have class)
+                  <li>Many design errors, Lousy Implementations, Amateurs
+                </ul>
+            </ul>
+        </ul>
+    </ul>
+  </section>
+  <div data-build>
+    <section class="bottomWide dark" data-auto>
+      <h2>But why JavaScript is so popular?</h2>
+    </section>
+  </div>
+</div>
+
+
+<div class="slide transparent image fullslides" data-backgroundid="bg-blueprint" style="background-image: url('../images/fullslides/lowndes-fig2.gif');">
+  <div data-build>
+    <section class="bottomWide dark" data-auto>
+      <h2>...Again Web 2.0 and Ajax*</h2>
+    </section>
+  </div>
+  <span class="credit dark">
+    <a href="http://www.archimuse.com/mw2006/papers/lowndes/lowndes-fig2.html"
+      >http://www.archimuse.com/mw2006/papers/lowndes/lowndes-fig2.html</a>
+  </span>
+  <aside class="note">
+    <section>
+      AJAX = Asynchronous Javascript And XML
+    </section>
+  </aside>
+</div>
+
+
+<div class="slide centercontents" data-backgroundid="bg-blueprint">
+  <header>JavaScript Framework</header>
+  <section>
+    <p>jQuery: "The Write Less, Do More" JavaScript Library *</p>
+  </section>
+  <aside class="note">
+    <section>
+      <img src="../images/jquery1.png" /><img src="../images/jquery2.png" /><img src="../images/jquery3.png" /><img src="../images/jquery4.png" />
+    </section>
+  </aside>
+</div>
+
+
+<div class="slide centercontents" data-backgroundid="bg-blueprint">
+  <header>jQuery</header>
+  <section>
+    <ul>
+      <li>DOM Scripting, AJAX, UI Effects
+        <pre>
+var external_links = document.getElementById('external_links');
+var links = external_links.getElementsByTagName('a');
+for (var i=0;i < links.length;i++) {
+    var link = links.item(i);
+    link.onclick = function() {
+        return confirm('You are going to visit: ' + this.href);
+    };
+}</pre>
+        <pre>
+$('#external_links a').click(function() {
+    return confirm('You are going to visit: ' + this.href);
+});</pre>
+      <li>Plugin architecture
+    </ul>
+  </section>
+</div>
+
+
+<div class="slide transparent image fullslides" data-backgroundid="bg-blueprint" style="background-image: url('../images/fullslides/jquery-mobile.jpg');">
+  <div data-build>
+    <section class="bottomWide dark" data-auto>
+      <h2>jQuery plugin for mobile environment</h2>
+    </section>
+  </div>
+</div>
+
+
+<div class="slide transparent image fullslides" data-backgroundid="bg-blueprint" style="background-image: url('../images/fullslides/ui_fw.png');">
+  <div data-build>
+    <section class="bottomWide dark" data-auto>
+      <h2>Tizen Web UI Framework is based on jQuery Mobile</h2>
+    </section>
+  </div>
+</div>
+
+
+<div class="slide transparent image fullslides" data-backgroundid="bg-blueprint" style="background-image: url('../images/fullslides/superman.jpg');">
+  <div data-build>
+    <section class="bottomWide dark" data-auto>
+      <h2>Go beyond stereotype</h2>
+    </section>
+  </div>
+</div>
+
+
+<div class="slide transparent image fullslides" data-backgroundid="bg-blueprint" style="background-image: url('../images/fullslides/github.png');">
+  <div data-build>
+    <section class="bottomWide dark" data-auto>
+      <h2>Node.js: evented I/O for v8 javascript</h2>
+    </section>
+  </div>
+</div>
+
+
+<div class="slide centercontents" data-backgroundid="bg-blueprint">
+  <header>Node.js</header>
+  <section>
+    <ul>
+      <li>Why don't use the same language as client?
+      <li>The joys of async programming
+        <pre>
+var http = require('http');
+var server = http.createServer(function (req, res) {
+    res.writeHead(200, { "Content-Type": "text/plain" })
+    res.end("Hello world");
+}).listen(80);</pre>
+      <li>Front-end developers can develop network service easily
+      <li><a href="http://no.de">no.de</a>
+        <ul>
+          <li>Node.js Cloud Services
+          <li><a href="http://www.joyent.com/2011/08/joyent-announces-smartos-with-kvm-an-open-source-modern-operating-system/">Virtualization</a> + Server-side JavaScript
+        </ul>
+    </ul>
+  </section>
+</div>
+
+
+<div class="slide transparent image" data-backgroundid="">
+  <div data-build>
+    <section class="bottomWide dark" data-auto>
+      <h1>JavaScript for Large-Scale applications</h1>
+    </section>
+  </div>
+</div>
+
+
+<div class="slide transparent image fullslides" data-backgroundid="bg-blueprint" style="background-image: url('../images/fullslides/large-scale.png');">
+  <div data-build>
+    <section class="bottomWide dark" data-auto>
+      <h2>jQuery is not enough</h2>
+      <h2>Yeah, these are the tools for traditional large-scale server programming!</h2>
+    </section>
+  </div>
+  <span class="credit dark">
+    <a href="http://addyosmani.com/toolsforjqueryapparchitecture/"
+      >http://addyosmani.com/toolsforjqueryapparchitecture/</a>
+  </span>
+</div>
+
+
+<div class="slide centercontents" data-backgroundid="bg-blueprint">
+  <header>Tools (1)</header>
+  <section>
+    <ul>
+      <li>Modulization
+        <ul>
+          <li><a href="http://helloworld.naver.com/helloworld/12864">CommonJS and AMD</a>
+        </ul>
+      <li>MVC Pattern
+        <ul>
+          <li>SproutCore: <a href="http://www.iphone-my.com/news/apples-icloud-built-sproutcore-framework/">Apple iCloud</a>
+        </ul>
+      <li><a href="http://addyosmani.com/resources/essentialjsdesignpatterns/book/">Design Patterns</a>
+      <li>Feature Detection
+        <ul>
+          <li>Modernizr
+            <pre>
+&lt;script src="js/modernizr-1.0.min.js"&gt;&lt;/script&gt;
+&lt;html class="no-js"&gt;
+            </pre>
+            <pre>
+&lt;html class="js canvas geolocation no-multiplebgs"&gt;
+            </pre>
+        </ul>
+    </ul>
+  </section>
+</div>
+
+
+<div class="slide centercontents" data-backgroundid="bg-blueprint">
+  <header>Tools (2)</header>
+  <section>
+    <ul>
+      <li>Testing
+        <ul>
+          <li>Unit Testing
+          <li>GUI Testing: Sencha <a href="http://www.sencha.com/blog/event-recorder-for-android-web-applications/">EventRecorder</a>
+        </ul>
+      <li>Build Process
+        <ul>
+          <li><a href="https://github.com/h5bp/ant-build-script">build script</a>
+          <li>Optimization, Minifcation/Concatenation
+          <li><a href="https://github.com/cowboy/grunt">Grunt</a>: a task-based command line build tool for JavaScript projects
+        </ul>
+      <li>UI Widgets
+        <ul>
+          <li>Dojo Toolkit, Sencha<img src="../images/sencha-logo_normal.png" />, <a href="http://demos.kendoui.com/autocomplete/index.html">Kendo UI</a><img src="../images/Kendo_normal.jpg" />
+        </ul>
+    </ul>
+  </section>
+</div>
+
+
+<div class="slide transparent image fullslides" data-backgroundid="bg-blueprint" style="background-image: url('../images/fullslides/Yeoman.Build.png');">
+  <div data-build>
+    <section class="bottomWide dark" data-auto>
+      <h2>Build system</h2>
+    </section>
+  </div>
+  <span class="credit dark">
+    <a href="https://developers.google.com/live/shows/ahNzfmdvb2dsZS1kZXZlbG9wZXJzcg4LEgVFdmVudBj3gtcCDA/"
+      >Google I/O 2012: Better Web App Development Through Tooling</a>
+  </span>  
+</div>
+
+
+<div class="slide transparent image fullslides" data-backgroundid="bg-blueprint" style="background-image: url('../images/fullslides/Yeoman.Testing2.png');">
+  <div data-build>
+    <section class="bottomWide dark" data-auto>
+      <h2>Testing</h2>
+    </section>
+  </div>
+  <span class="credit dark">
+    <a href="https://developers.google.com/live/shows/ahNzfmdvb2dsZS1kZXZlbG9wZXJzcg4LEgVFdmVudBj3gtcCDA/"
+      >Google I/O 2012: Better Web App Development Through Tooling</a>
+  </span>  
+</div>
+
+
+<div class="slide transparent image fullslides" data-backgroundid="bg-blueprint" style="background-image: url('../images/fullslides/kendo.png');">
+  <div data-build>
+    <section class="bottomWide dark" data-auto>
+      <h2>Template and Data Source</h2>
+    </section>
+  </div>
+</div>
+
+
+<div class="slide transparent image fullslides" data-backgroundid="bg-blueprint" style="background-image: url('../images/fullslides/ajax-org-ui-framework-sample-shot.jpg');">
+  <div data-build>
+    <section class="bottomWide dark" data-auto>
+      <h2>Meta Programming</h2>
+      <h2>- John Resig, <a href="http://pieceoflena.no.de/ajax/aml">AML</a> (<a href="demos/aml.html.txt">aml.html</a>)</h2>
+    </section>
+  </div>
+  <span class="credit dark">
+    <a href="http://dev.kthcorp.com/2012/02/16/javascript-meta-programming/"
+      >http://dev.kthcorp.com/2012/02/16/javascript-meta-programming/</a>
+  </span>
+</div>
+
+
+<div class="slide transparent image fullslides" data-backgroundid="bg-blueprint" style="background-image: url('../images/fullslides/whites.jpg');">
+  <section class="quote"><img src="../images/quote.png"></section>
+  <section class="dark blacks center" data-auto>
+    I introduced HTML5, CSS3 and JavaScript technology.<br/>
+    I will present IDE in context of web using these technology.
+  </section>
+</div>
+
+
+<!--
+ *
+ * TOPIC 4: Web and IDE
+ *
+-->
+<div class="slide transparent segue centercontents" data-backgroundid="bg-blueprint">
+  <h1>Web and IDE</h1>
+</div>
+
+
+<div class="slide transparent image fullslides" data-backgroundid="bg-blueprint" style="background-image: url('../images/fullslides/hybrid_app.png');">
+  <div data-build>
+    <section class="bottomWide dark" data-auto>
+      <h2>Hybrid App</h2>
+    </section>
+  </div>
+</div>
+
+
+<div class="slide" data-backgroundid="bg-blueprint">
+  <header>Hybrid App</header>
+  <section>
+  <iframe src="hybrid1.html" frameborder="0" scrolling="yes" width="100%" height="90%"></iframe>
+  </section>
+</div>
+
+
+<div class="slide" data-backgroundid="bg-blueprint">
+  <header>Hybrid App > Framework Architecture</header>
+  <section>
+  <iframe src="hybrid2.html" frameborder="0" scrolling="yes" width="100%" height="90%"></iframe>
+  </section>
+</div>
+
+
+<div class="slide" data-backgroundid="bg-blueprint">
+  <header>Hybrid App > PhoneGap</header>
+  <section>
+  <iframe src="hybrid3.html" frameborder="0" scrolling="yes" width="100%" height="90%"></iframe>
+  </section>
+</div>
+
+
+<div class="slide transparent image fullslides" data-backgroundid="bg-blueprint" style="background-image: url('../images/fullslides/wac_ide1.png');">
+  <div data-build>
+    <section class="bottomWide dark" data-auto>
+      <h2>WAC</h2>
+    </section>
+  </div>
+</div>
+
+
+<div class="slide transparent image fullslides" data-backgroundid="bg-blueprint" style="background-image: url('../images/fullslides/wac_ide2.png');">
+  <div data-build>
+    <section class="bottomWide dark" data-auto>
+      <h2>Web Runtime Architecture</h2>
+    </section>
+  </div>
+</div>
+
+
+<div class="slide transparent image" data-backgroundid="">
+  <div data-build>
+    <section class="bottomWide dark" data-auto>
+      <h1>Web-based IDE</h1>
+    </section>
+  </div>
+</div>
+
+
+<div class="slide centercontents" data-backgroundid="bg-blueprint">
+  <header>Why Web-based IDE?</header>
+  <section>
+    <ul>
+      <li>Already, we use web so much in software development
+        <ul>
+          <li>using a web-based bug tracking system <img class="moving" valign="middle" src="../images/redmine.png" style="-webkit-animation-delay: 1s;" />
+          <li>monitoring your build <img class="moving" valign="middle" src="../images/hudson_med.png" style="-webkit-animation-delay: 2s;" />
+          <li>reviewing code changes <img class="moving" valign="middle" src="../images/git-logo_med.png" style="-webkit-animation-delay: 3s;" />
+          <li>reading documentation and searching for code snippets <img class="moving" valign="middle" src="../images/stackoverflow.png" style="-webkit-animation-delay: 4s;" />
+          <li>browsing other people's code repositories <img class="moving" valign="middle" src="../images/github.png" style="-webkit-animation-delay: 5s;" />
+        </ul>
+      <li>Web browser is the best simulator for web technology
+    </ul>
+  </section>
+</div>
+
+
+<div class="slide transparent image fullslides" data-backgroundid="bg-blueprint" style="background-image: url('../images/fullslides/e4_1.png');">
+  <div data-build>
+    <section class="bottomWide dark" data-auto>
+      <h2>Eclipse moved to web from 2008</h2>
+    </section>
+  </div>
+</div>
+
+
+<div class="slide transparent image fullslides" data-backgroundid="bg-blueprint" style="background-image: url('../images/fullslides/e4_2.png');">
+  <div data-build>
+    <section class="bottomWide dark" data-auto>
+      <h2>Web-based workbench</h2>
+    </section>
+  </div>
+</div>
+
+
+<div class="slide transparent image fullslides" data-backgroundid="bg-blueprint" style="background-image: url('../images/fullslides/web_ide1.png');">
+  <div data-build>
+    <section class="bottomWide dark" data-auto>
+      <h2>Comparison matrix for web-based IDE</h2>
+    </section>
+  </div>
+  <span class="credit dark">
+    S-Core
+  </span>
+</div>
+
+
+<div class="slide transparent image fullslides" data-backgroundid="bg-blueprint" style="background-image: url('../images/fullslides/web_ide3.png');">
+  <div data-build>
+    <section class="bottomWide dark" data-auto>
+      <h2>Web-based IDE relates with Cloud</h2>
+    </section>
+  </div>
+</div>
+
+
+<div class="slide transparent image fullslides" data-backgroundid="bg-blueprint" style="background-image: url('../images/fullslides/cloud.png');">
+  <div data-build>
+    <section class="bottomWide dark" data-auto>
+      <h2>Cloud Computing</h2>
+    </section>
+  </div>
+</div>
+
+
+<div class="slide transparent image" data-backgroundid="" id="paas">
+  <div data-build>
+    <section class="bottomWide dark" data-auto>
+      <h1>PaaS (Platform as a Service)</h1>
+    </section>
+  </div>
+</div>
+
+
+<div class="slide transparent image fullslides" data-backgroundid="bg-blueprint" style="background-image: url('../images/fullslides/web_ide2.png');">
+  <div data-build>
+    <section class="bottomWide dark" data-auto>
+      <h2>Model 1: Cloud-based IDE</h2>
+      <h2>Cloud9 IDE*</h2>
+    </section>
+  </div>
+  <aside class="note">
+    <section>
+      <ul>
+        <li>Editor for HTML, CSS, JavaScript, Coffeescript, Ruby, PHP
+          <ul>
+            <li>Syntax highlighting
+            <li>Themes
+            <li>Search and replace with regular expressions
+          </ul>
+        <li>Chat with team members
+        <li>Run, Debug and Test
+        <li>Git Integration
+        <li>Team and Project Management
+      </ul>
+    </section>
+  </aside>
+</div>
+
+
+<div class="slide transparent image fullslides" data-backgroundid="bg-blueprint" style="background-image: url('../images/fullslides/stackmob.png');">
+  <div data-build>
+    <section class="bottomWide dark" data-auto>
+      <h2>Model 2: Mobile backend (1)</h2>
+      <h2>StackMob*</h2>
+    </section>
+  </div>
+  <aside class="note">
+    <section>
+      <ul>
+        <li><a href="http://stackmob.com/">http://stackmob.com/</a>
+        <li>Mobile backend as a service platform (BaaS)
+          <ul>
+            <li>Ruby, Java, Scala and Clojure
+            <li>OAuth, social services (Twitter, Facebook, etc)
+            <li>Storage solutions (Joyent now, Amazon coming shortly)
+            <li>Advertising (coming soon)
+            <li>Messaging (including Push)
+            <li>API creation and custom server code (Java interface)
+          </ul>
+        <li>If iOS, is it competent to Apple iCloud + iMessaging?
+        <li>If StackMob fails, is it enough to provide just data export feature?
+      </ul>
+    </section>
+  </aside>
+</div>
+
+
+<div class="slide" data-backgroundid="bg-blueprint">
+  <header>StackMob</header>
+  <section>
+  <iframe src="stackmob.html" frameborder="0" scrolling="yes" width="100%" height="90%"></iframe>
+  </section>
+</div>
+
+
+<div class="slide transparent image fullslides" data-backgroundid="bg-blueprint" style="background-image: url('../images/fullslides/parse.png');">
+  <div data-build>
+    <section class="bottomWide dark" data-auto>
+      <h2>Model 2: Mobile backend (2)</h2>
+      <h2>Parse*</h2>
+    </section>
+  </div>
+  <aside class="note">
+    <section>
+      <ul>
+        <li><a href="http://parse.com/">http://parse.com/</a>
+        <li>Server-side development backend
+        <ul>
+          <li>Data Storage & Sync: Game Server
+          <li>Push Notifications: Cacao Talk?
+          <li>Social Integration
+          <li>User Management
+        </ul>
+      </ul>
+    </section>
+  </aside>
+</div>
+
+
+<div class="slide transparent image fullslides" data-backgroundid="bg-blueprint" style="background-image: url('../images/fullslides/strobe.png');">
+  <div data-build>
+    <section class="bottomWide dark" data-auto>
+      <h2>Model 2: Mobile backend (3)</h2>
+      <h2>Strobe*</h2>
+    </section>
+  </div>
+  <aside class="note">
+    <section>
+      <ul>
+        <li><a href="http://www.strobecorp.com/">http://www.strobecorp.com/</a>
+        <li>App Delivery Network for HTML5-based mobile applications
+        <ul>
+          <li>Provide direct, personal business services
+          <li>Provide hosting and deployment services, managing user entitlements & licenses
+          <li>"With Strobe, all you have to do is build your app, and we take care of everything else."
+          <li>Cross-Platform Development ("Building mobile applications for a multi-screen world")
+            <ul>
+              <li>SproutCore
+              <li>PhoneGap
+            </ul>
+        </ul>
+      </ul>
+    </section>
+  </aside>
+</div>
+
+
+<div class="slide transparent image fullslides" data-backgroundid="bg-blueprint" style="background-image: url('../images/fullslides/gamesalad.png');">
+  <div data-build>
+    <section class="bottomWide dark" data-auto>
+      <h2>Model 2: Mobile backend (4)</h2>
+      <h2>Game Creation Platform: GameSalad*</h2>
+    </section>
+  </div>
+  <aside class="note">
+    <section class="sangsang">
+      <ul>
+        <li>BaaS에는 Visual 요소만 디자인하면 코딩을 전혀 할 줄 모르는 사람들도 쉽게 게임을 개발할 수 있는 Game Creation Platform도 존재한다. 게임샐러드는 코딩이 필요없는 게임 Creation 플랫폼으로서 비쥬얼 디자인만 하면 iOS, 안드로이드, HTML5 등 게임 앱을 자동으로 만들어 준다. 전세계 30만명의 개발자들이 활용하고 있으며, 6만개의 게임 App.이 출시되었으며 그중 1만개는 iOS App.이다. 미국 App. Store에서 이중 60개가 Top 100에 랭크되었다.
+        <li><a href="http://hompy.info/618">http://hompy.info/618</a>
+    </section>
+  </aside>
+</div>
+
+
+<div class="slide transparent image fullslides" data-backgroundid="bg-blueprint" style="background-image: url('../images/fullslides/phonegap_build.png');">
+  <div data-build>
+    <section class="bottomWide dark" data-auto>
+      <h2>Model 3: Cloud Power > Build (1)</h2>
+      <h2><a href="http://edoli.tistory.com/47">PhoneGap:Build</a> ("Say goodbye to SDKs, compilers and hardware")*</h2>
+    </section>
+  </div>
+  <aside class="note">
+    <section>
+      PhoneGap Build: build.phonegap.com, debug.phonegap.com
+      <ul>
+        <li>Integration with Dreamweaver
+        <ul class="sangsang">
+          <li>로그인</li>
+          <li>플랫폼별 빌드 진행 상황 확인</li>
+          <li>바로 에뮬레이터 실행도 가능</li>
+        </ul>
+        <li><a href="http://corlan.org/2012/03/07/using-phonegap-build-and-debug/">Impressed to see that it only took 2-3 minutes to go from a web app to running an Android app on my phone."</a>
+      </ul>
+    </section>
+  </aside>
+</div>
+
+
+<div class="slide transparent image fullslides" data-backgroundid="bg-blueprint" style="background-image: url('../images/fullslides/appMobi-PhoneGap-XDK-5.png');">
+  <div data-build>
+    <section class="bottomWide dark" data-auto>
+      <h2>Model 3: Cloud Power > Build (2)</h2>
+      <h2><a href="http://www.appmobi.com/?q=node/153">PhoneGap XDK*</a></h2>
+    </section>
+  </div>
+  <aside class="note">
+    <section>
+      <ul>
+        <li><a href="http://www.appmobi.com/?q=content/overview-appmobis-development-tools-and-services">HTML5 mobile development strategies</a>
+        <ul>
+            <li>Classic Web Apps - No device interface, no on-device caching (only works online)
+            <li>Mobile Web Apps - HTML5 Caching (works online/offline), some device interface (GPS, Accelerometer)
+            <li>MobiUs Enhanced Web Apps - Caching (works online/offline), full native device interface using appMobi API
+            <li>Hybrid Native Apps - built from HTML5/JS using appMobi's Cloud Build service 
+        </ul>
+        <li><span class="sangsang">웹 배포 모델 (웹앱의 특성에 따라 화면과 화면의 특성에 따라 개발자가 신중하게 선택)</span><br/>
+        <a href="http://xguru.net/593">Mobile Web App의 종류</a>
+        <ul>
+            <li>Online Web App (reading contents from server)
+            <li>Offline-enabled Web App: Local Data (syncing data with server)
+            <li>Offline Web App: Local Data ex.)) Game
+            <li>Hybrid Web App
+        </ul>
+      </ul>
+    </section>
+  </aside>
+</div>
+
+
+<div id="silk" class="slide transparent image fullslides" data-backgroundid="bg-blueprint" style="background-image: url('../images/fullslides/silk-2.jpg');">
+  <div data-build>
+    <section class="bottomWide dark" data-auto>
+      <h2>Model 3: Cloud Power (2)</h2>
+      <h2>Amazon Silk* (Cloud-based Browser)</h2>
+    </section>
+  </div>
+  <aside class="note">
+    <section>
+      <ul>
+        <li><a href="http://amazonsilk.wordpress.com/">Amazon SILK</a>
+        <li>More thiner client (Client doesn't need even a browser): <a href="http://blog.creation.net/509">클라우드 브라우저의 탄생</a>
+        <li>vs. Client-based Browser
+          <ul>
+            <li>68G RAM, 8-Core CPU, Optimized Network vs. 1G RAM, 2-Core CPU
+            <li>One compressed packages from the Amazon cloud vs. 50 resources from a variety of web servers
+          </ul>
+        <li>Details
+          <ul>
+            <li>Optimized for cloud and mobile
+            <li>Stores web pages in cloud storage
+            <li>Prediction to visiting web sites by cache information
+            <li><a href="http://www.chromium.org/spdy">SPDY</a>
+            <li>EC2 keep permanent connections open to popular sites like Facebook and Google
+          </ul>
+      </ul>
+      <!--
+      <img src="../images/silk-1.jpg">
+      -->
+    </section>
+  </aside>
+</div>
+
+
+<div class="slide transparent image fullslides" data-backgroundid="bg-blueprint" style="background-image: url('../images/fullslides/sliderocket.png');">
+  <div data-build>
+    <section class="bottomWide dark" data-auto>
+      <h2>Model 4: Cloud Authoring <span class="smaller">("How did you make this presentation?")</span></h2>
+      <h2><a href="http://bartaz.github.com/impress.js">impress.js</a> (Prezi-style using CSS3 3D Transform)</h2>
+      <h2><a href="http://www.youtube.com/embed/nija_9mLTPE">SlideRocket</a></h2>
+      <h2><a href="http://rvl.io">Reveal.js</a></h2>
+    </section>
+  </div>
+  <!--
+  <section style="z-index: 1;">
+    <iframe width="560" height="315" src="http://www.youtube.com/embed/nija_9mLTPE" frameborder="0" allowfullscreen></iframe>
+  </section>
+  -->
+</div>
+
+
+<div class="slide transparent image fullslides" data-backgroundid="bg-blueprint" style="background-image: url('../images/fullslides/sencha-animator-beta-hero.jpg');">
+  <div data-build>
+    <section class="bottomWide dark" data-auto>
+      <h2>Model 4: Cloud Authoring</h2>
+      <h2>Sencha Animator</h2>
+    </section>
+  </div>
+</div>
+
+
+<div class="slide transparent image fullslides" data-backgroundid="bg-blueprint" style="background-image: url('../images/fullslides/hiciel.png');">
+  <div data-build>
+    <section class="bottomWide dark" data-auto>
+      <h2>Model 4: Cloud Authoring</h2>
+      <h2>HiCIEL: Scenario-based Android Application Builder</h2>
+    </section>
+  </div>
+</div>
+
+
+<div class="slide transparent image fullslides" data-backgroundid="bg-blueprint" style="background-image: url('../images/fullslides/chrome_lala_500.jpg');">
+  <div data-build>
+    <section class="bottomWide dark" data-auto>
+      <h2>Model 5: GaaS, Cloud Game</h2>
+      <h2><a href="http://www.bloter.net/archives/117281"><span class="sangsang">웹브라우저도 클라우드 게임 서비스를 이용할 수 있는 좋은 플랫폼</span></a></h2>
+      <h2><a href="http://www.bloter.net/archives/118625"><span class="sangsang">방송·통신업계, ‘클라우드 게임’ 만지작</span></a></h2>
+    </section>
+  </div>
+</div>
+
+
+<div class="slide transparent image fullslides" data-backgroundid="bg-blueprint" style="background-image: url('../images/fullslides/Maqetta_Main_Page.jpg');">
+  <div data-build>
+    <section class="bottomWide dark" data-auto>
+      <h2>Web GUI Builder</h2>
+      <h2>It is run by Eclipse OSGi and you can use it <a href="http://maqetta.org:55556/maqetta/">now</a></h2>
+    </section>
+  </div>
+</div>
+
+
+<div class="slide transparent image fullslides" data-backgroundid="bg-blueprint" style="background-image: url('../images/fullslides/divshot.png');">
+  <div data-build>
+    <section class="bottomWide dark" data-auto>
+      <h2>Interface Builder</h2>
+      <h2><a href="http://bootstrap-forms.heroku.com/">Bootstrap Form Builder</a>, <a href="http://divshot.com/">divshot</a>, <a href="http://jetstrap.com">Jetstrap</a></h2>
+    </section>
+  </div>
+</div>
+
+
+<div class="slide transparent image" data-backgroundid="">
+  <div data-build>
+    <section class="bottomWide dark" data-auto>
+      <h1>Other Development Tools</h1>
+    </section>
+  </div>
+</div>
+
+
+<div class="slide transparent image fullslides" data-backgroundid="bg-blueprint" style="background-image: url('../images/fullslides/amazon-appstore-test-drive.png');">
+  <div data-build>
+    <section class="bottomWide dark" data-auto>
+      <h2>Emulator in browser</h2>
+      <h2>Amazon Test Drive*</h2>
+    </section>
+  </div>
+  <section style="z-index: 1;">
+    <object style="height: 390px; width: 640px;"><param name="movie" value="http://www.youtube.com/v/SyA3CDVqhLk?version=3"><param name="allowFullScreen" value="true"><param name="allowScriptAccess" value="always"><param name="wmode" value="transparent"><embed src="http://www.youtube.com/v/SyA3CDVqhLk?version=3" type="application/x-shockwave-flash" allowfullscreen="true" allowScriptAccess="always" width="640" height="360" wmode="transparent"></object>
+  </section>
+  <aside class="note">
+    <section style="z-index: 2;">
+      <ul>
+        <li>Architecture
+          <ul>
+            <li>TestDrive allows prospective app buyers to run a live preview of an app with an Android device emulator that runs in their browsers.
+            <li>Test Drive is currently not available to customers outside the U.S.
+          </ul>
+        <li>Architecture
+          <ul>
+            <li>To utilize <a href="http://blog.android-x86.org/2011/04/amazon-test-drive-use-android-x86.html">Main developer Yi Sun confirmed that the Amazon use our android-x86</a>
+          </ul>
+        <li>References
+          <ul>
+            <li><a href="http://www.android-x86.org/">Android-x86 - Porting Android to x86</a>
+            <li><a href="http://blog.android-x86.org/">http://blog.android-x86.org/</a>
+          </ul>
+      </ul>
+    </section>
+  </aside>
+</div>
+
+
+<div class="slide centercontents">
+  <header>Web-based WAC Simulator</header>
+  <section>
+    <ul>
+      <li>Ripple-UI is a mobile web application emuation environment
+      <ul>
+        <!--
+        <li><a href="https://chrome.google.com/webstore/detail/geelfhphabnejjhdalkjhgipohgpdnoc">Install</a>
+        -->
+        <li>Accelerometer emulation (<a href="web/accelerometer.html">accelerometer.html</a>)
+      </ul>
+    </ul>
+  </section>
+  <iframe src="web/index.html" frameborder="0" scrolling="yes" width="1024" height="99.7%"></iframe>
+</div>
+
+
+<div class="slide">
+  <header>WEINRE (WEb INspector REmote)</header>
+  <section>
+  <iframe src="weinre.html" frameborder="0" scrolling="yes" width="100%" height="90%"></iframe>
+  </section>
+</div>
+
+
+<div class="slide centercontents" data-backgroundid="" style="background: black;">
+  <section class="blacks center" data-auto>
+     <p>Can we utilize and prototype it?</p>
+    <ul>
+        <li>RAD for web application
+        <li>Tizen Web Simulator - separation from Control Panel and Skin/CEF process
+    </ul>
+    <p>Or utilize Node.js?!</p>
+    <ul>
+        <li>Alternative to WEINRE: <a href="http://nowjs.com">now</a> or <a href="http://nodejs-kr.org/insidejs/archives/609">dnode</a>
+        <li>Build: <a href="https://github.com/cowboy/grunt">Grunt</a>
+        <li>LESS compile: npm install less
+    </ul>
+  </section>
+</div>
+
+
+<div class="slide centercontents" data-backgroundid="" style="background: black;">
+  <section class="blacks center" data-auto>
+    <p>More about PC and targets</p>
+    <ul>
+        <li><a href="http://tv.adobe.com/watch/adobe-technology-sneaks-2012/adobe-shadow/">Adobe Shadow</a> (PC to multiple targets)
+        <li>Let's swap the direction...* (target to PC)
+            <ul>
+                <li>Use Android device as Control Panel to the web application running in PC
+            </ul>
+     </ul>
+  </section>
+  <aside class="note">
+    <section class="sangsang">
+    구매하기에서 결제할 사람, 배송지에서 받을 사람(소셜네트워크 목록을 활용)을 바꾼 것만으로도 '조르기', '선물하기'라는 개념이 도입된다.
+    </section>
+  </aside>
+</div>
+
+
+<div class="slide transparent image fullslides" data-backgroundid="bg-blueprint" style="background-image: url('../images/fullslides/whites.jpg');">
+  <section class="quote"><img src="../images/quote.png"></section>
+  <section class="dark blacks center" data-auto>
+    We reached almost to the end.
+    <ul>
+    </ul>
+    I will add some comments and wrap up in the next chapter.
+  </section>
+</div>
+
+
+<div class="slide centercontents" data-backgroundid="bg-blueprint">
+  <header>My Mini IDE and Sandbox (1)</header>
+  <section>
+    <ul>
+      <li>Node.js
+        <ul>
+            <li><a href="http://expressjs.com/">Express</a> (node web framework)
+            <li>oAuth (Sign in with twitter)
+        </ul>
+      <li>UI
+        <ul>
+            <li>Template Engine: <a href="http://embeddedjs.com/index.html">EJS</a> than <a href="http://jade-lang.com/">Jade</a>
+            <li><a href="http://twitter.github.com/bootstrap/">Twitter bootstrap</a>
+          </ul>
+      <li>DB
+        <ul>
+            <li>MongoDB
+          </ul>
+      <li>Hosting in no.de Smart Machine
+    </ul>
+    <a href="http://pieceoflena.no.de">Try it?</a>
+  </section>
+</div>
+
+
+<div class="slide centercontents" data-backgroundid="bg-blueprint">
+  <header>My Mini IDE and Sandbox (2)</header>
+  <section>
+    <ul>
+      <li>Route and RESTful
+        <pre>
+app.get('/documents', loadUser, documents.index);
+app.post('/documents.:format?', loadUser, documents.create);
+
+app.del('/sessions', function(req, res) ...); // ?
+        </pre>
+      <li>Access control middleware
+        <pre>
+function loadUser(req, res, next) {
+    if (req.session.user_id) {
+        next();
+    } else {
+        res.redirect('/sessions/new');
+    }
+}
+        </pre>
+    </ul>  Now, let's try to remove login facility.
+  </section>
+</div>
+
+
+<div class="slide centercontents" data-backgroundid="bg-blueprint">
+  <header>IDE Concept (1)</header>
+  <section>
+  MVC requires route picker than file picker in a single context.
+  <iframe src="route.html" frameborder="0" scrolling="yes" width="100%" height="80%"></iframe>
+  </section>
+  <span class="credit dark">
+    <a href="http://www.chris-granger.com/2012/05/21/the-future-is-specific/"
+      >The future is specific</a>
+  </span>
+</div>
+
+
+<div class="slide transparent image fullslides" data-backgroundid="bg-blueprint" style="background-image: url('../images/fullslides/Realtime.png');">
+  <div data-build>
+    <section class="bottomWide dark" data-auto>
+      <h2>IDE Concept (2)</header>
+      <h2>>Realtime feedback</header>
+    </section>
+  </div>
+  <span class="credit dark">
+    <a href="http://www.youtube.com/watch?v=PUv66718DII"
+      >Bret Victor - Inventing on Principle </a>
+  </span>  
+</div>
+
+
+<div class="slide transparent image fullslides" data-backgroundid="bg-blueprint" style="background-image: url('../images/fullslides/Yeoman.Realtime.png');">
+  <div data-build>
+    <section class="bottomWide dark" data-auto>
+      <h2>IDE Concept (2)</header>
+      <h2>>Realtime feedback: live recompilation and reload</header>
+    </section>
+  </div>
+  <span class="credit dark">
+    <a href="https://developers.google.com/live/shows/ahNzfmdvb2dsZS1kZXZlbG9wZXJzcg4LEgVFdmVudBj3gtcCDA/"
+      >Google I/O 2012: Better Web App Development Through Tooling</a>
+  </span>  
+</div>
+
+
+<!--
+ *
+ * Wrapping Up
+ *
+-->
+<div class="slide centercontents" id="wrapup" data-backgroundid="bg-pattern">
+  <header>What you saw</header>
+  <section>
+    <span class="filetheme">Web Technology</span>
+    <ul>
+      <li><span class="theme">HTML5</span>,
+          <span class="theme">CSS3</span>,
+          <span class="theme">JavaScript</span></li>
+      <li><span class="theme">Hybrid App</span></li>
+    </ul>
+    <br>
+    <span class="graphicstheme">Web</span>
+    <ul>
+      <li><span class="theme">Mobile Web</span>
+    </ul>
+    <span class="graphicstheme">Web and IDE</span>
+    <ul>
+      <li><span class="theme">Web-based IDE</span>
+      <li><span class="theme">Cloud</span>
+      <li><span class="theme">Development Tools</span>
+    </ul>
+  </section>
+</div>
+
+
+<div class="slide centercontents" id="wrapup" data-backgroundid="bg-pattern">
+  <header>IMHO,</header>
+  <section>
+    <span class="theme">I don't think web application is cure-all.</span>
+    <ul>
+      <li><span class="theme">The risk of exposing core logic</span>
+      <li><span class="theme">The risk of losing local data</span>
+      <li><span class="theme">Low performance: <a href="http://news.naver.com/main/read.nhn?mid=smn&sid1=105&oid=025&aid=0002209193&datetime=2012062814510209193"><span class="sangsang">페이스북 아이폰 앱에서 HTML5 포기</span></a></span>
+    </ul>
+    <br>
+    <span class="theme">It will have a great synergy with cloud service.</span>
+  </section>
+</div>
+
+
+<div class="slide centercontents" id="wrapup" data-backgroundid="bg-pattern">
+  <header>What I hope</header>
+  <section>
+    <span class="filetheme">To discover new opportunity in Web</span>
+    <br>
+    <span class="graphicstheme">To study JavaScript</span>
+    <br>
+    <br>
+    <span class="audiotheme">And you have...</span>
+    <br>
+  </section>
+</div>
+
+
+<div class="slide transparent image fullslides" data-backgroundid="bg-blueprint" style="background-image: url('../images/fullslides/beard.jpg');">
+  <div data-build>
+    <section class="bottomWide dark" data-auto>
+      <h2>BEARD to be a good programmer!</h2>
+    </section>
+  </div>
+</div>
+
+
+<!--
+ *
+ * THANKS
+ *
+-->
+<div class="slide segue transparent centercontents" id="thanks" data-backgroundid="bg-google-red">
+  <section>
+    <h1>Thanks!</h1>
+    <p>Visit WAC IDE <a href="http://172.21.13.7/sdk/wac">Website</a> written in HTML5/CSS3/JavaScript</p>
+  </section>
+</div>
+
+
+<!--
+ *
+ * REFERENCES
+ *
+-->
+<div class="slide centercontents">
+  <header>References</header>
+  <section>
+    <ul>
+      <li><a href="http://www.google.com/events/io/2011/sessions/html5-showcase-for-web-developers-the-wow-and-the-how.html">HTML5 Showcase for Web Developers: The Wow and the How</a></li>
+      <li>CSS3
+        <ul>
+          <li><a href="http://naradesign.net/ouif/css3/documentation.html">CSS3 소개</a></li>
+        </ul>
+      <li>HTML5
+        <ul>
+          <li><a href="http://www.slideshare.net/Channy/history-and-status-of-html5-1675600">History and Status of HTML5</a></li>
+          <li><a href="http://www.html5rocks.com/en/tutorials/canvas/notearsgame/">No Tears Guide to HTML5 Games</a></li>
+        </ul>
+      <li>JavaScript
+        <ul>
+          <li><a href="http://addyosmani.com/toolsforjqueryapparchitecture/">Tools For jQuery Application Architecture</a></li>
+        </ul>
+      <li><a href="http://buildwindows.com">BUILD</a></li>
+      <li><a href="http://w3labs.kr/?p=1018"><span class="sangsang">크로스플랫폼 앱 프레임워크 선택의 기준</span></a></li>
+    </ul>
+  </section>
+</div>
+
+
+    </div>
+    <div id="overlay"></div>
+
+    <script src="js/prettify/prettify.js" async></script>
+    <script src="js/libs/glMatrix-0.9.5.min.js" async></script>
+    <script src="js/config.js" defer></script>
+    <!--<script src="socket.io/socket.io.js" defer></script>-->
+    <script src="js/libs/yepnope.1.0.1-min.js" defer></script>
+    <script src="js/slide-presentation.js" defer></script>
+    <script src="js/slide-content.js" defer></script>
+
+    <div id="background"></div>
+    <div id="stage"></div>
+  </body>
+</html>

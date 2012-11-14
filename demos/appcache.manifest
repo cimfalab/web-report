@@ -1,0 +1,15 @@
+CACHE MANIFEST
+# this is comment
+# manifest version : v1.1 20100808
+CACHE:
+stylesheet.css
+js/jquery.js
+js/system.js
+img/logo.png
+img/icons.png
+ 
+NETWORK:
+login.php
+ 
+FALLBACK:
+img/main_image.png   img/backup_image.png
