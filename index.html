@@ -194,9 +194,7 @@ Author: Eric Bidelman (ericbidelman@chromium.org)
     }
   </style>
   <link rel="stylesheet" href="themes/default/default.css" type="text/css" media="screen" />
-  <link rel="stylesheet" href="themes/pascal/pascal.css" type="text/css" media="screen" />
-  <link rel="stylesheet" href="themes/orman/orman.css" type="text/css" media="screen" />
-  <script src="js/jquery-1.6.1.min.js" type="text/javascript"></script>
+  <script src="js/jquery-1.7.1.min.js" type="text/javascript"></script>
   <script type="text/javascript">
     $(document).ready(function () {
         $('#testbutton').bind('click', function() {
@@ -575,7 +573,7 @@ Author: Eric Bidelman (ericbidelman@chromium.org)
   <header>HTML5</header>
   <section>
     <p>8 technologies</p>
-    <a href="http://www.w3.org/html/logo/#the-technology"><img src="../images/html5-badge-h-connectivity-css3-device-graphics-multimedia-performance-semantics-storage.png" /></a><br/>
+    <a href="http://www.w3.org/html/logo/#the-technology"><img src="images/html5-badge-h-connectivity-css3-device-graphics-multimedia-performance-semantics-storage.png" /></a><br/>
     <span class="smaller">(Connectivity, CSS3 & Styling, Device Access, 3D & Effects, Multimedia, Performance & Integration, Semantics, Offline & Storage)</span>
     <p>New features let you:</p>
     <ul data-build>
@@ -602,8 +600,8 @@ Author: Eric Bidelman (ericbidelman@chromium.org)
 <div class="slide centercontents" data-backgroundid="bg-blueprint">
   <header><span class="theme3">Productivity</span> Structural Markup (1)</header>
   <table><tr>
-  <td><img src="../images/markup1.png" /></td>
-  <td><div data-build><img src="../images/markup2.png" /></div></td>
+  <td><img src="images/markup1.png" /></td>
+  <td><div data-build><img src="images/markup2.png" /></div></td>
   </tr></table>
 </div>
 
@@ -611,8 +609,8 @@ Author: Eric Bidelman (ericbidelman@chromium.org)
 <div class="slide centercontents" data-backgroundid="bg-blueprint">
   <header><span class="theme3">Productivity</span> Structural Markup (2)</header>
   <table><tr>
-  <td align="top"><img src="../images/markup3.png" /></td>
-  <td><div data-build><img src="../images/markup4.png" /></div></td>
+  <td align="top"><img src="images/markup3.png" /></td>
+  <td><div data-build><img src="images/markup4.png" /></div></td>
   </tr></table>
 </div>
 
@@ -654,7 +652,7 @@ Author: Eric Bidelman (ericbidelman@chromium.org)
 <div class="slide centercontents" data-backgroundid="bg-blueprint">
   <header><span class="theme3">Rich Web</span> Web Forms</header>
   <table><tr>
-  <td align="top"><img src="../images/contact-form-submit-with-errors.png" /></td>
+  <td align="top"><img src="images/contact-form-submit-with-errors.png" /></td>
   <td valign="top" width="480"><div data-build>
   <section>
     <pre style="font-size: small;">
@@ -717,12 +715,13 @@ var reg = new RegExp(
 <div class="slide centercontents" data-backgroundid="bg-blueprint">
   <header><span class="theme5">Rich Web</span> Multimedia</header>
   <section>
-    <pre>&lt;video src="http://www.double.co.nz/video_test/transformers480.ogg" controls&gt;
+    <pre>&lt;video src="http://www.tools4movies.com/trailers/1012/Iron%20Man%203.mp4"
+     controls&gt;
   &lt;div class="no-html5-video"&gt;&lt;/div&gt;
 &lt;/video&gt;</pre>
   </section>
   <section>
-        <p><video src="http://www.double.co.nz/video_test/transformers480.ogg" controls>
+        <p><video src="http://www.tools4movies.com/trailers/1012/Iron%20Man%203.mp4" controls width="640">
           <div class="no-html5-video"><p></p></div>
         </video></p>
   </section>
@@ -806,10 +805,10 @@ function show_position(position) {
       <li><a href="space_demo/site/index.html">Play Galaxy lite!</a>
       <li><pre>canvas.getContext('2d').drawImage(sprite_image, ...);</pre>
       <section class="margin: 0;">
-        <img class="cutout" style="margin: 0; max-height: 100px;" src="../../demos/canvas-sprite/spritesheet.png" />
+        <img class="cutout" style="margin: 0; max-height: 100px;" src="demos/canvas-sprite/spritesheet.png" />
       </section>
       <section data-build>
-        <iframe style="border: 0; width: 805px; height: 255px;" data-src="../demos/canvas-sprite/index.html"></iframe>
+        <iframe style="border: 0; width: 805px; height: 255px;" data-src="demos/canvas-sprite/index.html"></iframe>
       </section>
     </ul>
   </section>
@@ -890,7 +889,7 @@ function show_position(position) {
         var message=messages[key];
         node.html(message);</pre>
         </li>
-        <li><a href="http://jquerymobile.com/demos/1.1.0-rc.1/docs/api/data-attributes.html">jQuery Mobile Data- attribute reference</a> <img valign="top" src="/images/jqm.jpg"></img></li>
+        <li><a href="http://jquerymobile.com/demos/1.1.0-rc.1/docs/api/data-attributes.html">jQuery Mobile Data- attribute reference</a> <img valign="top" src="images/jqm.jpg"></img></li>
       </section>
     </ul>
   </section>
@@ -1531,7 +1530,7 @@ alert(var1);</pre>
   </section>
   <aside class="note">
     <section>
-      <img src="../images/jquery1.png" /><img src="../images/jquery2.png" /><img src="../images/jquery3.png" /><img src="../images/jquery4.png" />
+      <img src="images/jquery1.png" /><img src="images/jquery2.png" /><img src="images/jquery3.png" /><img src="images/jquery4.png" />
     </section>
   </aside>
 </div>
@@ -1689,7 +1688,7 @@ var server = http.createServer(function (req, res) {
         </ul>
       <li>UI Widgets
         <ul>
-          <li>Dojo Toolkit, Sencha<img src="../images/sencha-logo_normal.png" />, <a href="http://demos.kendoui.com/autocomplete/index.html">Kendo UI</a><img src="../images/Kendo_normal.jpg" />
+          <li>Dojo Toolkit, Sencha<img src="images/sencha-logo_normal.png" />, <a href="http://demos.kendoui.com/autocomplete/index.html">Kendo UI</a><img src="images/Kendo_normal.jpg" />
         </ul>
     </ul>
   </section>
@@ -1746,7 +1745,7 @@ var server = http.createServer(function (req, res) {
 
 
 <div class="slide transparent image fullslides" data-backgroundid="bg-blueprint" style="background-image: url('images/fullslides/whites.jpg');">
-  <section class="quote"><img src="../images/quote.png"></section>
+  <section class="quote"><img src="images/quote.png"></section>
   <section class="dark blacks center" data-auto>
     I introduced HTML5, CSS3 and JavaScript technology.<br/>
     I will present IDE in context of web using these technology.
@@ -1821,11 +1820,11 @@ var server = http.createServer(function (req, res) {
     <ul>
       <li>Already, we use web so much in software development
         <ul>
-          <li>using a web-based bug tracking system <img class="moving" valign="middle" src="../images/redmine.png" style="-webkit-animation-delay: 1s;" />
-          <li>monitoring your build <img class="moving" valign="middle" src="../images/hudson_med.png" style="-webkit-animation-delay: 2s;" />
-          <li>reviewing code changes <img class="moving" valign="middle" src="../images/git-logo_med.png" style="-webkit-animation-delay: 3s;" />
-          <li>reading documentation and searching for code snippets <img class="moving" valign="middle" src="../images/stackoverflow.png" style="-webkit-animation-delay: 4s;" />
-          <li>browsing other people's code repositories <img class="moving" valign="middle" src="../images/github.png" style="-webkit-animation-delay: 5s;" />
+          <li>using a web-based bug tracking system <img class="moving" valign="middle" src="images/redmine.png" style="-webkit-animation-delay: 1s;" />
+          <li>monitoring your build <img class="moving" valign="middle" src="images/hudson_med.png" style="-webkit-animation-delay: 2s;" />
+          <li>reviewing code changes <img class="moving" valign="middle" src="images/git-logo_med.png" style="-webkit-animation-delay: 3s;" />
+          <li>reading documentation and searching for code snippets <img class="moving" valign="middle" src="images/stackoverflow.png" style="-webkit-animation-delay: 4s;" />
+          <li>browsing other people's code repositories <img class="moving" valign="middle" src="images/github.png" style="-webkit-animation-delay: 5s;" />
         </ul>
       <li>Web browser is the best simulator for web technology
     </ul>
