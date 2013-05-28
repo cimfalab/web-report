@@ -186,6 +186,12 @@ Author: Eric Bidelman (ericbidelman@chromium.org)
     .sangsang {
         font-family: sangsang;
     }
+
+    iframe {
+        width: 1024px;
+        height: 520px;
+        margin-top: 20px;
+    }
   </style>
   <link rel="stylesheet" href="themes/default/default.css" type="text/css" media="screen" />
   <link rel="stylesheet" href="themes/pascal/pascal.css" type="text/css" media="screen" />
@@ -800,10 +806,10 @@ function show_position(position) {
       <li><a href="space_demo/site/index.html">Play Galaxy lite!</a>
       <li><pre>canvas.getContext('2d').drawImage(sprite_image, ...);</pre>
       <section class="margin: 0;">
-        <img class="cutout" style="margin: 0; max-height: 100px" src="../../demos/canvas-sprite/spritesheet.png" />
+        <img class="cutout" style="margin: 0; max-height: 100px;" src="../../demos/canvas-sprite/spritesheet.png" />
       </section>
       <section data-build>
-        <iframe style="border: 0; width:805px; height: 255px; " data-src="../demos/canvas-sprite/index.html"></iframe>
+        <iframe style="border: 0; width: 805px; height: 255px;" data-src="../demos/canvas-sprite/index.html"></iframe>
       </section>
     </ul>
   </section>
@@ -1048,7 +1054,7 @@ Using mixin:
   <div data-build>
     <section class="bottomWide dark" data-auto>
       <h2>WebSocket</h2>
-      <h2>It enables real-time communication like trading system, remote inspector, hybrid app and <a href="http://pieceoflena.no.de/chat">chat</a>*</h2>
+      <h2>It enables real-time communication like trading system, remote inspector, hybrid app and <a href="http://cimfalab-mini.herokuapp.com/chat">chat</a>*</h2>
     </section>
   </div>
   <span class="credit dark">
@@ -1277,7 +1283,7 @@ WebSocket: SOA and Enterprise Web Application
 
 <div class="slide" data-backgroundid="bg-blueprint">
   <header>Windows 8 BUILD</header>
-  <iframe src="build.html" frameborder="0" scrolling="yes" width="100%" height="94.7%"></iframe>
+  <iframe src="build.html" frameborder="0" scrolling="yes"></iframe>
 </div>
 
 
@@ -1729,7 +1735,7 @@ var server = http.createServer(function (req, res) {
   <div data-build>
     <section class="bottomWide dark" data-auto>
       <h2>Meta Programming</h2>
-      <h2>- John Resig, <a href="http://pieceoflena.no.de/ajax/aml">AML</a> (<a href="demos/aml.html.txt">aml.html</a>)</h2>
+      <h2>- John Resig, <a href="http://cimfalab-mini.herokuapp.com/ajax/aml">AML</a> (<a href="demos/aml.html.txt">aml.html</a>)</h2>
     </section>
   </div>
   <span class="credit dark">
@@ -1770,7 +1776,7 @@ var server = http.createServer(function (req, res) {
 <div class="slide" data-backgroundid="bg-blueprint">
   <header>Hybrid App</header>
   <section>
-  <iframe src="hybrid1.html" frameborder="0" scrolling="yes" width="100%" height="90%"></iframe>
+  <iframe src="hybrid1.html" frameborder="0" scrolling="yes"></iframe>
   </section>
 </div>
 
@@ -1778,7 +1784,7 @@ var server = http.createServer(function (req, res) {
 <div class="slide" data-backgroundid="bg-blueprint">
   <header>Hybrid App > Framework Architecture</header>
   <section>
-  <iframe src="hybrid2.html" frameborder="0" scrolling="yes" width="100%" height="90%"></iframe>
+  <iframe src="hybrid2.html" frameborder="0" scrolling="yes"></iframe>
   </section>
 </div>
 
@@ -1786,7 +1792,7 @@ var server = http.createServer(function (req, res) {
 <div class="slide" data-backgroundid="bg-blueprint">
   <header>Hybrid App > PhoneGap</header>
   <section>
-  <iframe src="hybrid3.html" frameborder="0" scrolling="yes" width="100%" height="90%"></iframe>
+  <iframe src="hybrid3.html" frameborder="0" scrolling="yes"></iframe>
   </section>
 </div>
 
@@ -1795,15 +1801,6 @@ var server = http.createServer(function (req, res) {
   <div data-build>
     <section class="bottomWide dark" data-auto>
       <h2>WAC</h2>
-    </section>
-  </div>
-</div>
-
-
-<div class="slide transparent image fullslides" data-backgroundid="bg-blueprint" style="background-image: url('../images/fullslides/wac_ide2.png');">
-  <div data-build>
-    <section class="bottomWide dark" data-auto>
-      <h2>Web Runtime Architecture</h2>
     </section>
   </div>
 </div>
@@ -1950,7 +1947,7 @@ var server = http.createServer(function (req, res) {
 <div class="slide" data-backgroundid="bg-blueprint">
   <header>StackMob</header>
   <section>
-  <iframe src="stackmob.html" frameborder="0" scrolling="yes" width="100%" height="90%"></iframe>
+  <iframe src="stackmob.html" frameborder="0" scrolling="yes"></iframe>
   </section>
 </div>
 
@@ -2012,6 +2009,7 @@ var server = http.createServer(function (req, res) {
     <section class="bottomWide dark" data-auto>
       <h2>Model 2: Mobile backend (4)</h2>
       <h2>Game Creation Platform: GameSalad*</h2>
+      <h2><a href="https://developers.google.com/games/">Google Play game services</a></h2>
     </section>
   </div>
   <aside class="note">
@@ -2153,9 +2151,26 @@ var server = http.createServer(function (req, res) {
 <div class="slide transparent image fullslides" data-backgroundid="bg-blueprint" style="background-image: url('../images/fullslides/chrome_lala_500.jpg');">
   <div data-build>
     <section class="bottomWide dark" data-auto>
-      <h2>Model 5: GaaS, Cloud Game</h2>
+      <h2>Model 5: GaaS, Cloud Game*</h2>
       <h2><a href="http://www.bloter.net/archives/117281"><span class="sangsang">웹브라우저도 클라우드 게임 서비스를 이용할 수 있는 좋은 플랫폼</span></a></h2>
       <h2><a href="http://www.bloter.net/archives/118625"><span class="sangsang">방송·통신업계, ‘클라우드 게임’ 만지작</span></a></h2>
+    </section>
+  </div>
+  <aside class="note">
+    <section>
+      <ul>
+        <li>클라우드 게임 서비스는 게임 화면을 인터넷 망을 통해 받아보는 개념이다. 예를 들어 사용자는 거실 TV에서 게임패드를 통해 서버로 입력 내용을 전달하고, 서버는 게이머가 입력한 내용에 따라 게임 화면을 계산해준다. 게임 서버는 게임 화면을 실시간으로 동영상 형식으로 바꿔 인터넷을 통해 뿌려주는 식이다. 쉽게 말해 게이머가 직접 조작할 수 있는 유튜브 동영상이라고 생각하면 된다. 주문형 게임(GOD), 혹은 서비스로서의 게임(GaaS)인 셈이다.
+    </section>
+  </aside>
+</div>
+
+
+<div class="slide transparent image fullslides" data-backgroundid="bg-blueprint" style="background-image: url('../images/fullslides/LB_3069.jpg');">
+  <div data-build>
+    <section class="bottomWide dark" data-auto>
+      <h2>Model 5: Cloud Game</h2>
+      <h2><a href="http://chrome.com/racer">Multi-play and multi-screen game</a></h2>
+      <h2><a href="http://www.youtube.com/watch?feature=player_embedded&v=TUY4bhf0_3M">PokerFun (TV)</a></h2>
     </section>
   </div>
 </div>
@@ -2224,27 +2239,18 @@ var server = http.createServer(function (req, res) {
 
 
 <div class="slide centercontents">
-  <header>Web-based WAC Simulator</header>
+  <header>Web-based WAC Simulator (based on <a href="https://github.com/blackberry/Ripple-UI">Ripple-UI</a>)</header>
   <section>
-    <ul>
-      <li>Ripple-UI is a mobile web application emuation environment
-      <ul>
-        <!--
-        <li><a href="https://chrome.google.com/webstore/detail/geelfhphabnejjhdalkjhgipohgpdnoc">Install</a>
-        -->
-        <li>Accelerometer emulation (<a href="web/accelerometer.html">accelerometer.html</a>)
-      </ul>
-    </ul>
   </section>
-  <iframe src="web/index.html" frameborder="0" scrolling="yes" width="1024" height="99.7%"></iframe>
+  <iframe src="web/index.html" frameborder="0" scrolling="yes"></iframe>
 </div>
 
 
 <div class="slide">
   <header>WEINRE (WEb INspector REmote)</header>
   <section>
-  <iframe src="weinre.html" frameborder="0" scrolling="yes" width="100%" height="90%"></iframe>
   </section>
+  <iframe src="weinre.html" frameborder="0" scrolling="yes"></iframe>
 </div>
 
 
@@ -2317,7 +2323,7 @@ var server = http.createServer(function (req, res) {
           </ul>
       <li>Hosting in no.de Smart Machine
     </ul>
-    <a href="http://pieceoflena.no.de">Try it?</a>
+    <a href="http://cimfalab-mini.herokuapp.com">Try it?</a>
   </section>
 </div>
 
@@ -2352,7 +2358,7 @@ function loadUser(req, res, next) {
   <header>IDE Concept (1)</header>
   <section>
   MVC requires route picker than file picker in a single context.
-  <iframe src="route.html" frameborder="0" scrolling="yes" width="100%" height="80%"></iframe>
+  <iframe src="route.html" frameborder="0" scrolling="yes"></iframe>
   </section>
   <span class="credit dark">
     <a href="http://www.chris-granger.com/2012/05/21/the-future-is-specific/"
