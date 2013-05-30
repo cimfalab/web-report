@@ -24,10 +24,13 @@ Author: Eric Bidelman (ericbidelman@chromium.org)
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
   <link rel="stylesheet" href="css/prettify.css">
   <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/slide-presentation.css">
+  <link rel="stylesheet" href="css/slide-content.css">
+  <!--
   <link rel="stylesheet/less" type="text/css" href="css/slide-presentation.less">
   <link rel="stylesheet/less" type="text/css" href="css/slide-content.less">
     <script src="js/libs/less-1.0.41.min.js" async></script>
-
+  -->
   <style>
     .fullslides {
         background-repeat: no-repeat;
@@ -628,17 +631,17 @@ Author: Eric Bidelman (ericbidelman@chromium.org)
 </div>
 
 
-<div class="slide centercontents">
+<div class="slide centercontents" data-backgroundid="bg-blueprint">
   <header><span class="theme3">Productivity</span> Semantic Markup</header>
   <section>
     <pre>
  - &lt;t lang="fr"&gt;je ne sais quoi&lt;/t&gt;
  - &lt;time datetime="2011-09-20"&gt;a tuesday&lt;/time&gt;
  - &lt;meter min="0" max="100" value="75"&gt;&lt;/meter&gt;
- - &lt;progress value="33" max="100"&gt;<br/>    &lt;span id="p"&gt;33&lt;/span&gt;% // fallback<br/>   &lt;/progress&gt;
+ - &lt;progress value="33" max="100"&gt;<br/>    &lt;span id="p"&gt;33&lt;/span&gt;%<br/>   &lt;/progress&gt;
 </pre>
   </section>
-  <div data-build>
+  <div>
     <pre>
  - <t lang="fr">je ne sais quoi</t>
  - <time datetime="2011-09-20">a tuesday</time>
@@ -889,7 +892,7 @@ function show_position(position) {
         var message=messages[key];
         node.html(message);</pre>
         </li>
-        <li><a href="http://jquerymobile.com/demos/1.1.0-rc.1/docs/api/data-attributes.html">jQuery Mobile Data- attribute reference</a> <img valign="top" src="images/jqm.jpg"></img></li>
+        <li><a href="http://jquerymobile.com/demos/1.1.0-rc.1/docs/api/data-attributes.html">jQuery Mobile Data- attribute reference</a></li>
       </section>
     </ul>
   </section>
@@ -1217,15 +1220,6 @@ WebSocket: SOA and Enterprise Web Application
 </div>
 
 
-<div class="slide transparent image fullslides" data-backgroundid="bg-blueprint" style="background-image: url('images/fullslides/wac.png');">
-  <div data-build>
-    <section class="bottomWide dark" data-auto>
-      <h2>...And WAC</h2>
-    </section>
-  </div>
-</div>
-
-
 <div class="slide transparent image fullslides" data-backgroundid="bg-blueprint" style="background-image: url('images/fullslides/standard.jpg');">
   <div data-build>
     <section class="bottomWide dark" data-auto>
@@ -1330,7 +1324,7 @@ WebSocket: SOA and Enterprise Web Application
   <div data-build>
     <section class="bottomWide dark" data-auto>
       <h2>...And Playboy loves HTML5</h2>
-      <h2>&raquo;<a href="http://www.bloter.net/archives/53026">Case of Readability</a>, <a href="http://www.iamday.net/apps/article/talk/1764/view.iamday"><span class="sangsang">카카오톡의 위기</span></a></h2>
+      <h2>&raquo;<a href="http://www.bloter.net/archives/53026">Case of Readability</a></h2>
     </section>
   </div>
   <span class="credit dark">
@@ -1730,6 +1724,7 @@ var server = http.createServer(function (req, res) {
 </div>
 
 
+<!--
 <div class="slide transparent image fullslides" data-backgroundid="bg-blueprint" style="background-image: url('images/fullslides/ajax-org-ui-framework-sample-shot.jpg');">
   <div data-build>
     <section class="bottomWide dark" data-auto>
@@ -1742,6 +1737,7 @@ var server = http.createServer(function (req, res) {
       >http://dev.kthcorp.com/2012/02/16/javascript-meta-programming/</a>
   </span>
 </div>
+-->
 
 
 <div class="slide transparent image fullslides" data-backgroundid="bg-blueprint" style="background-image: url('images/fullslides/whites.jpg');">
@@ -1796,15 +1792,6 @@ var server = http.createServer(function (req, res) {
 </div>
 
 
-<div class="slide transparent image fullslides" data-backgroundid="bg-blueprint" style="background-image: url('images/fullslides/wac_ide1.png');">
-  <div data-build>
-    <section class="bottomWide dark" data-auto>
-      <h2>WAC</h2>
-    </section>
-  </div>
-</div>
-
-
 <div class="slide transparent image" data-backgroundid="">
   <div data-build>
     <section class="bottomWide dark" data-auto>
@@ -1847,18 +1834,6 @@ var server = http.createServer(function (req, res) {
       <h2>Web-based workbench</h2>
     </section>
   </div>
-</div>
-
-
-<div class="slide transparent image fullslides" data-backgroundid="bg-blueprint" style="background-image: url('images/fullslides/web_ide1.png');">
-  <div data-build>
-    <section class="bottomWide dark" data-auto>
-      <h2>Comparison matrix for web-based IDE</h2>
-    </section>
-  </div>
-  <span class="credit dark">
-    S-Core
-  </span>
 </div>
 
 
@@ -1975,6 +1950,7 @@ var server = http.createServer(function (req, res) {
 </div>
 
 
+<!--
 <div class="slide transparent image fullslides" data-backgroundid="bg-blueprint" style="background-image: url('images/fullslides/strobe.png');">
   <div data-build>
     <section class="bottomWide dark" data-auto>
@@ -2001,6 +1977,7 @@ var server = http.createServer(function (req, res) {
     </section>
   </aside>
 </div>
+-->
 
 
 <div class="slide transparent image fullslides" data-backgroundid="bg-blueprint" style="background-image: url('images/fullslides/gamesalad.png');">
@@ -2127,6 +2104,7 @@ var server = http.createServer(function (req, res) {
 </div>
 
 
+<!--
 <div class="slide transparent image fullslides" data-backgroundid="bg-blueprint" style="background-image: url('images/fullslides/sencha-animator-beta-hero.jpg');">
   <div data-build>
     <section class="bottomWide dark" data-auto>
@@ -2145,6 +2123,7 @@ var server = http.createServer(function (req, res) {
     </section>
   </div>
 </div>
+-->
 
 
 <div class="slide transparent image fullslides" data-backgroundid="bg-blueprint" style="background-image: url('images/fullslides/chrome_lala_500.jpg');">
